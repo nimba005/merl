@@ -32,8 +32,34 @@
 
       <nav class="nav-links">
         <a href="#" class="active">Home</a>
-        <a href="#">Public Dashboard</a>
-        <a href="#">Projects Gallery</a>
+
+        <!-- Public Dashboard (has dropdown) -->
+        <div class="has-dd">
+          <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Public Dashboard</a>
+          <!-- mobile/touch toggle -->
+          <input type="checkbox" id="dd-dashboard" class="dd-toggle" aria-label="Toggle Public Dashboard menu">
+          <label for="dd-dashboard" class="dd-caret" aria-hidden="true"></label>
+
+          <div class="dropdown">
+            <a href="national.html">National Government</a>
+
+            <!-- County Government (nested submenu) -->
+            <div class="has-dd sub">
+              <a href="#" class="dd-parent" aria-haspopup="true">County Government</a>
+              <!-- mobile/touch toggle -->
+              <input type="checkbox" id="dd-county" class="dd-toggle" aria-label="Toggle County menu">
+              <label for="dd-county" class="dd-caret" aria-hidden="true"></label>
+
+              <div class="dropdown">
+                <!-- Send users to auth, then redirect to target dashboard after sign-in -->
+                <a href="auth.html?next=vihiga.html">Vihiga</a>
+                <a href="auth.html?next=makueni.html">Makueni</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#resources">Resources &amp; Publications</a>
         <a href="#">Feedback</a>
         <a href="#">FAQ</a>
         <a href="#">Contact Us</a>
@@ -60,8 +86,7 @@
         <div class="divider"></div>
 
         <p class="lead">
-          A unified platform aimed at boosting efficiency, fostering transparency, and ensuring
-          accountability in monitoring and tracking projects throughout the county.
+          A digital MERL tool that embeds climate-specific indicators to track, evaluate, report, and learn from climate investments—powering transparent, participatory, data-driven decisions in Vihiga County.
         </p>
 
         <div class="quick-stats">
@@ -100,6 +125,105 @@
       </div>
     </div>
   </section>
+
+  <!-- DASHBOARD PREVIEW -->
+  <section id="dashboard" class="dash-preview">
+    <div class="container">
+      <div class="dash-head">
+        <h2>Public Dashboard</h2>
+        <p class="dash-sub">
+          Explore live insights on project distribution, budget utilization, timelines, and completion rates across wards and departments.
+        </p>
+        <a href="#" class="btn btn-cta">Open Dashboard</a>
+      </div>
+
+      <div class="dash-grid">
+        <article class="dash-card">
+          <div class="dash-card-head">
+            <h3>Budget Utilization</h3>
+            <span class="pill">FY 2024/25</span>
+          </div>
+          <div class="dash-main">
+            <div class="big-number">73%</div>
+            <div class="muted">of allocated budget absorbed</div>
+          </div>
+          <div class="dash-foot">Updated 3 days ago</div>
+        </article>
+
+        <article class="dash-card">
+          <div class="dash-card-head">
+            <h3>Projects by Status</h3>
+            <span class="pill">Snapshot</span>
+          </div>
+          <ul class="legend">
+            <li><span class="dot green"></span> Completed: 1,190</li>
+            <li><span class="dot blue"></span> Ongoing: 133</li>
+            <li><span class="dot amber"></span> Not started: 1</li>
+          </ul>
+          <div class="dash-foot">See full breakdown</div>
+        </article>
+
+        <article class="dash-card">
+          <div class="dash-card-head">
+            <h3>Top Sectors</h3>
+            <span class="pill">Countywide</span>
+          </div>
+          <ul class="list">
+            <li>Roads & Infrastructure</li>
+            <li>Water & Sanitation</li>
+            <li>Health Facilities</li>
+            <li>Agriculture</li>
+          </ul>
+          <div class="dash-foot"><a href="#">View sector maps →</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES & PUBLICATIONS -->
+  <section id="resources" class="gallery-strip">
+    <div class="container">
+      <div class="gallery-head">
+        <h2>Resources &amp; Publications</h2>
+        <p class="dash-sub">Policy briefs, technical guides, reports, and training materials from the MERL initiative.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-1.jpg" alt="Concept Note cover">
+          <span class="g-caption">Concept Note (2025–2026)</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
+          <span class="g-caption">MERL Technical Guide</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-3.jpg" alt="Training toolkit cover">
+          <span class="g-caption">Training Toolkit (ToT)</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-4.jpg" alt="Validation report cover">
+          <span class="g-caption">Pilot Validation Report</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-5.jpg" alt="User manual cover">
+          <span class="g-caption">Dashboard User Manual</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-6.jpg" alt="Indicators brief cover">
+          <span class="g-caption">Climate Indicators Set</span>
+        </a>
+      </div>
+
+
+      <div class="gallery-cta">
+        <a href="#" class="btn btn-ghost">Browse All Resources</a>
+      </div>
+
+    </div>
+  </section>
+
+
 
   <!-- FOOTER (placeholder) -->
   <footer class="footer">
