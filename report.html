@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Report</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html">
+        <img src="static/images/coat-of-arms.png" class="brand-logo" alt="">
+        <span class="brand-text">MERL – Project Reporting</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#" id="logoutBtn" class="btn btn-login" style="background:#941b0c">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <h1 id="title">Report</h1>
+      <p class="auth-hint" id="meta"></p>
+
+      <div class="form-row">
+        <label>Progress Update</label>
+        <textarea id="update" rows="6" style="width:100%;border:1px solid #dfe3ea;border-radius:10px;padding:10px;"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>Current Status</label>
+        <select id="status">
+          <option>Not started</option>
+          <option>Ongoing</option>
+          <option>Delayed</option>
+          <option>Completed</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="submitBtn" type="button">Submit Update</button>
+        <span id="msg" class="auth-hint"></span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Require login and show simple info
+    const user = JSON.parse(localStorage.getItem('merlUser') || 'null');
+    const params = new URLSearchParams(location.search);
+    const pid = params.get('project') || 'UNKNOWN';
+
+    if (!user) {
+      // Redirect to main MERL login application
+      location.replace("https://merl.agnes.africa/home");
+    } else {
+      document.getElementById('title').textContent = `Report: ${pid}`;
+      const scope = user.scope === 'county' ? `${user.county} County` : 'National Government';
+      document.getElementById('meta').textContent = `Signed in as ${user.email} · ${scope}`;
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', () => {
+      document.getElementById('msg').textContent = 'Saved (demo only).';
+      setTimeout(()=>{ document.getElementById('msg').textContent=''; }, 1500);
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('merlUser');
+      // Redirect to main MERL login page
+      location.assign("https://merl.agnes.africa/home");
+    });
+  </script>
+</body>
+</html>
