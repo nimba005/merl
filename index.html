@@ -112,7 +112,7 @@
             <span class="pill">FY 2024/25</span>
           </div>
           <div class="dash-main">
-            <div class="big-number">73%</div>
+            <div class="big-number">Coming soon</div>
             <div class="muted">of allocated budget absorbed</div>
           </div>
           <div class="dash-foot">Updated 1 month ago</div>
@@ -174,10 +174,10 @@
       </div>
 
       <div class="gallery-grid">
-        <a href="#" class="g-item">
+        <!--<a href="#" class="g-item">
           <img src="static/images/AGNES.png" alt="Concept Note cover">
           <span class="g-caption">Concept Note (2025–2026)</span>
-        </a>
+        </a>-->
         <a href="#" class="g-item">
           <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
           <span class="g-caption">MERL Technical Guide</span>
@@ -205,6 +205,75 @@
       </div>
     </div>
   </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-inner">
+
+      <h2>Reach Out to the MERL Support Team</h2>
+      <p class="contact-sub">
+        For technical assistance, dashboard access, or general MERL support, contact us using the channels below.
+      </p>
+
+      <!-- CONTACT CARDS (ONLY EMAIL + PHONE)
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:e.nimba@agnesafrica.org" class="contact-link">
+              e.nimba@agnesafrica.org
+            </a>
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Phone</h3>
+          <p>
+            <a href="tel:+254700000000" class="contact-link">
+              +254 700 000 000
+            </a>
+          </p>
+        </div>
+      </div>-->
+      <!-- MESSAGE FORM -->
+      <form class="contact-form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
+
+        <div class="form-grid">
+
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" name="Name" required>
+          </div>
+
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="Email" required>
+          </div>
+
+          <div class="form-field">
+            <label>Designation / Role</label>
+            <input type="text" name="Designation" required>
+          </div>
+
+          <div class="form-field">
+            <label>County</label>
+            <input type="text" name="County" required>
+          </div>
+
+        </div>
+        <div class="form-field full">
+          <label>Message</label>
+          <textarea name="Message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">Send Message</button>
+
+      </form>
+
+    </div>
+  </section>
+
+
 
   <!-- FOOTER -->
   <footer class="footer">
