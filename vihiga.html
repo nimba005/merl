@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Vihiga County – Projects Dashboard</title>
+  <title>MERL TOOL – Vihiga County Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-inner container">
       <a class="brand" href="index.html">
-        <img src="static/images/coat-of-arms.png" alt="County Logo" class="brand-logo">
-        <span class="brand-text">Government of Vihiga County</span>
+        <img src="static/images/coat-of-arms.png" alt="Kenya Coat of Arms" class="brand-logo">
+        <img src="static/images/vihiga-logo.png" alt="Vihiga County Logo" class="brand-logo brand-logo-secondary">
+        <span class="brand-text">MERL TOOL – Vihiga County</span>
       </a>
 
+      <!-- Mobile menu toggle (CSS-only) -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
-      <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
 
       <nav class="nav-links">
         <a href="index.html">Home</a>
 
         <div class="has-dd">
-          <a href="javascript:void(0)" class="dd-parent">Dashboard</a>
-          <input type="checkbox" id="dd-dashboard" class="dd-toggle">
-          <label for="dd-dashboard" class="dd-caret"></label>
+          <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Counties</a>
+          <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
+          <label for="dd-counties" class="dd-caret" aria-hidden="true"></label>
+
           <div class="dropdown">
-            <a href="vihiga.html">Vihiga County</a>
+            <a href="vihiga.html" class="active">Vihiga County</a>
             <a href="makueni.html">Makueni County</a>
           </div>
         </div>
 
-        <a href="#indicators">Indicators</a>
-
         <a href="https://merl.agnes.africa/home" class="btn btn-login">Login</a>
       </nav>
-
     </div>
   </header>
 
@@ -45,44 +48,52 @@
   <section class="hero">
     <div class="hero-inner container">
       <div class="hero-media">
-        <img src="static/images/hero-excavator.jpg" alt="Vihiga Projects">
+        <img src="static/images/vihiga-county.png" alt="Vihiga climate-resilient projects">
       </div>
 
       <div class="hero-copy">
-        <h1 class="hero-rotator" aria-label="Vihiga County – Projects Dashboard">
+        <h1 class="hero-rotator" aria-label="Vihiga County – Climate Investment Dashboard">
           <span class="slide">Vihiga County</span>
-          <span class="slide">Projects Dashboard</span>
-          <span class="slide">Report &amp; Track Progress</span>
+          <span class="slide">Climate-Resilient Investments Dashboard</span>
+          <span class="slide">Monitoring, Evaluation, Reporting &amp; Learning</span>
         </h1>
 
         <div class="divider"></div>
 
         <p class="lead">
-          View county projects and file progress reports. Data shown here reflects the Vihiga implementation context.
+          This Vihiga County dashboard provides a structured MERL view of climate-resilient
+          investments under the County Government of Vihiga – Department of Environment,
+          Water, Energy, Natural Resources &amp; Climate Change (Directorate of Climate Change).
+          It tracks project progress, budget utilization, and direct beneficiary households.
         </p>
 
         <div class="quick-stats">
-          <div class="qs-header">Quick Stats — Vihiga</div>
+          <div class="qs-header">Quick Stats – Vihiga CCRI (FY 2024/25)</div>
           <div class="cards">
             <article class="stat-card">
-              <h3>Total Projects</h3>
-              <div class="stat-number">51</div>
-              <div class="stat-sub">Budget Ksh 1,246,000,000</div>
+              <h3>All Projects</h3>
+              <div class="stat-number">11</div>
+              <div class="stat-sub">Budget ≈ Ksh 165M</div>
             </article>
             <article class="stat-card">
-              <h3>Completed</h3>
-              <div class="stat-number">38</div>
-              <div class="stat-sub">(+ last 12 months)</div>
+              <h3>Ongoing Projects</h3>
+              <div class="stat-number">1</div>
+              <div class="stat-sub">South Maragoli Apiculture</div>
             </article>
             <article class="stat-card">
-              <h3>Ongoing</h3>
+              <h3>Not Started Projects</h3>
+              <div class="stat-number warn">0</div>
+              <div class="stat-sub">&nbsp;</div>
+            </article>
+            <article class="stat-card">
+              <h3>Stalled Projects</h3>
+              <div class="stat-number warn">0</div>
+              <div class="stat-sub">&nbsp;</div>
+            </article>
+            <article class="stat-card">
+              <h3>Completed Projects</h3>
               <div class="stat-number">10</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-            <article class="stat-card">
-              <h3>Not Started</h3>
-              <div class="stat-number warn">3</div>
-              <div class="stat-sub">&nbsp;</div>
+              <div class="stat-sub">≈ 6,653 HHs reached</div>
             </article>
           </div>
         </div>
@@ -90,50 +101,467 @@
     </div>
   </section>
 
-  <!-- PROJECTS TO REPORT -->
-  <section id="projects" class="gallery-strip">
+  <!-- DASHBOARD PREVIEW -->
+  <section id="dashboard" class="dash-preview">
     <div class="container">
-      <div class="gallery-head">
-        <h2>Projects — Click to Report</h2>
-        <p class="dash-sub">Select a project to file an update. You must be signed in.</p>
+      <div class="dash-head">
+        <h2>Vihiga Climate Investment Analytics</h2>
+        <p class="dash-sub">
+          Near–real-time insights on CCRI project performance, budget absorption, and service
+          delivery outcomes across wards in Vihiga County.
+        </p>
+        <a href="https://merl.agnes.africa/home" class="btn btn-cta">Open Vihiga Dashboard</a>
       </div>
 
-      <div class="gallery-grid">
-        <a href="report.html?project=VHG-001" class="g-item">
-          <img src="static/images/gallery-1.jpg" alt="Ward Access Road">
-          <span class="g-caption">VHG-001 · Ward Access Road</span>
-        </a>
-        <a href="report.html?project=VHG-002" class="g-item">
-          <img src="static/images/gallery-2.jpg" alt="Community Borehole">
-          <span class="g-caption">VHG-002 · Community Borehole</span>
-        </a>
-        <a href="report.html?project=VHG-003" class="g-item">
-          <img src="static/images/gallery-3.jpg" alt="Health Centre Upgrade">
-          <span class="g-caption">VHG-003 · Health Centre Upgrade</span>
-        </a>
-        <a href="report.html?project=VHG-004" class="g-item">
-          <img src="static/images/gallery-4.jpg" alt="Market Stalls">
-          <span class="g-caption">VHG-004 · Market Stalls</span>
-        </a>
-        <a href="report.html?project=VHG-005" class="g-item">
-          <img src="static/images/gallery-5.jpg" alt="Bridge Repair">
-          <span class="g-caption">VHG-005 · Bridge Repair</span>
-        </a>
-        <a href="report.html?project=VHG-006" class="g-item">
-          <img src="static/images/gallery-6.jpg" alt="School Classrooms">
-          <span class="g-caption">VHG-006 · School Classrooms</span>
-        </a>
-      </div>
+      <div class="dash-grid">
+        <article class="dash-card">
+          <div class="dash-card-head">
+            <h3>Budget Utilization</h3>
+            <span class="pill">FY 2024/25</span>
+          </div>
+          <div class="dash-main">
+            <div class="big-number">Coming soon</div>
+            <div class="muted">of allocated CCRI budget absorbed</div>
+          </div>
+          <div class="dash-foot">Data sync via MERL backend</div>
+        </article>
 
-      <div class="gallery-cta">
-        <a href="#" class="btn btn-ghost">View All Vihiga Projects</a>
+        <article class="dash-card">
+          <div class="dash-card-head">
+            <h3>Key Investment Areas</h3>
+            <span class="pill">CCRI Portfolio</span>
+          </div>
+          <ul class="list">
+            <li>Community Water Supply &amp; Solarization</li>
+            <li>Climate-Resilient Irrigation &amp; Apiculture</li>
+            <li>Bridge &amp; Access Infrastructure</li>
+            <li>Forest &amp; Ecosystem Rehabilitation</li>
+          </ul>
+          <div class="dash-foot"><a href="#projects">Browse project portfolio →</a></div>
+        </article>
       </div>
     </div>
   </section>
 
+  <!-- PROJECTS EXPLORER – VIHIGA CCRI PROJECTS -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="projects-head">
+        <h2>Vihiga CCRI Projects (FY 2024/25)</h2>
+        <p class="dash-sub">
+          County Government of Vihiga – Department of Environment, Water, Energy,
+          Natural Resources &amp; Climate Change, Directorate of Climate Change.<br>
+          Filter by sector and quickly scan project budgets, timelines, and beneficiary households.
+        </p>
+      </div>
+
+      <!-- FILTER BAR -->
+      <form class="projects-filters" id="projects-filter-form">
+        <div class="filter-group">
+          <label for="filter-year">Year</label>
+          <select id="filter-year" name="year">
+            <option value="">All years</option>
+            <option value="2024">2024/2025</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-county">County</label>
+          <select id="filter-county" name="county">
+            <option value="">All counties</option>
+            <option value="Vihiga" selected>Vihiga</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-sector">Sector</label>
+          <select id="filter-sector" name="sector">
+            <option value="">All sectors</option>
+            <option value="Water">Water &amp; Sanitation</option>
+            <option value="Agriculture">Agriculture &amp; Livelihoods</option>
+            <option value="Environment">Environment &amp; Forestry</option>
+            <option value="Infrastructure">Roads &amp; Infrastructure</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button type="submit" class="btn btn-cta filter-btn">Filter</button>
+          <button type="button" class="btn btn-ghost filter-reset" id="filter-reset">
+            Reset
+          </button>
+        </div>
+      </form>
+
+      <!-- PROJECT CARDS – ONE PER CCRI PROJECT -->
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- 1. AUGMENTATION OF EBUKHAYA COMMUNITY WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Augmentation of Ebukhaya Community Water Project</h3>
+          <p>
+            Expansion of Ebukhaya community water supply to increase access to safe and
+            reliable water under climate stress.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/ENV/002/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 21,990,866.35 &nbsp;|&nbsp;
+              <strong>Households:</strong> 345</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by a community
+              management committee.</p>
+          </div>
+        </article>
+
+        <!-- 2. EKAMANJI COMMUNITY CLIMATE RESILIENT WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Ekamanji Community Climate Resilient Water Project</h3>
+          <p>
+            Climate-resilient water project providing household and community water security
+            in Ekamanji area.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/009/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 12,598,740.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> 115</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by VIWASCO,
+              the County Water Utility Company.</p>
+          </div>
+        </article>
+
+        <!-- 3. KAILA COMMUNITY CLIMATE RESILIENT WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Construction of Kaila Community Climate Resilient Water Project</h3>
+          <p>
+            Construction of a climate-resilient community water scheme in Kaila to secure
+            domestic and productive water use.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/005/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 16,200,000.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> 190</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by a
+              community management committee.</p>
+          </div>
+        </article>
+
+        <!-- 4. MARAGOLI HILLS FOREST REHABILITATION -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Environment">
+          <h3>Rehabilitation of 70 Acres of Maragoli Hills Forest</h3>
+          <p>
+            Rehabilitation and restoration of seventy (70) acres of Maragoli Hills Forest
+            to enhance ecosystem resilience and watershed protection.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Environment &amp; Forestry</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/001/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 9,380,224.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> N/A</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed and paid; under a maintenance framework
+              and managed by the Kenya Forest Service.</p>
+          </div>
+        </article>
+
+        <!-- 5. MUTAVE–JEPSESI BRIDGE -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Infrastructure">
+          <h3>Construction of Mutave–Jepesi Bridge</h3>
+          <p>
+            Construction of Mutave–Jepesi bridge to improve connectivity, market access
+            and disaster resilience for local communities.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Roads &amp; Infrastructure</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/006/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 13,158,344.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> 5,000</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use.</p>
+          </div>
+        </article>
+
+        <!-- 6. VIGINA WATER PROJECT EQUIPPING & SOLARIZATION -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Equipping, Expansion &amp; Solarization of Vigina Water Project</h3>
+          <p>
+            Equipping, expanding, and solarizing the Vigina water project to enhance
+            efficiency and reliability of supply.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/008/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 14,442,824.43 &nbsp;|&nbsp;
+              <strong>Households:</strong> 143</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, fully paid and in use; managed by a
+              community project management committee.</p>
+          </div>
+        </article>
+
+        <!-- 7. NADIRADI COMMUNITY WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Augmentation of Nadiradi Community Water Project</h3>
+          <p>
+            Augmentation of Nadiradi community water system to strengthen climate-resilient
+            water access for households.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/007/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 15,899,748.75 &nbsp;|&nbsp;
+              <strong>Households:</strong> 213</p>
+            <p><strong>Period:</strong> 20th Sept 2024 – 20th Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by a
+              community management committee.</p>
+          </div>
+        </article>
+
+        <!-- 8. KAPTIK MWALA COMMUNITY WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Construction of Kaptik Mwala Climate-Resilient Water Project</h3>
+          <p>
+            Construction of Kaptik Mwala climate-resilient community water scheme to
+            diversify water sources and strengthen resilience.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/ENV/004/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 22,337,766.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> 182</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by a
+              community management committee.</p>
+          </div>
+        </article>
+
+        <!-- 9. KEGONDI COMMUNITY WATER PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Water">
+          <h3>Construction of Kegondi Community Climate Resilient Water Project</h3>
+          <p>
+            Climate-resilient community water project in Kegondi to support domestic,
+            institutional and small-scale productive use.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Water &amp; Sanitation</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/003/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 12,097,795.15 &nbsp;|&nbsp;
+              <strong>Households:</strong> 135</p>
+            <p><strong>Period:</strong> 2nd Sept 2024 – 2nd Dec 2024</p>
+            <p><strong>Status:</strong> Completed, paid and in use; managed by a
+              community management committee.</p>
+          </div>
+        </article>
+
+        <!-- 10. SOUTH MARAGOLI APICULTURE PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Agriculture">
+          <h3>Completion &amp; Commercialization of South Maragoli Apiculture Project</h3>
+          <p>
+            Completion and commercialization of a climate-resilient apiculture enterprise
+            to diversify livelihoods in South Maragoli.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Agriculture &amp; Livelihoods</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/WATER/222/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 14,338,330.00 &nbsp;|&nbsp;
+              <strong>Households:</strong> 180</p>
+            <p><strong>Period:</strong> 14th Mar 2025 – 14th Jun 2025</p>
+            <p><strong>Status:</strong> Works ongoing (about 70% complete); expenditure
+              to date: Ksh 0.00.</p>
+          </div>
+        </article>
+
+        <!-- 11. BUHANI IRRIGATION PROJECT -->
+        <article class="project-card"
+                 data-year="2024"
+                 data-county="Vihiga"
+                 data-sector="Agriculture">
+          <h3>Completion &amp; Commercialization of Buhani Irrigation Project</h3>
+          <p>
+            Completion and commercialization of Buhani irrigation scheme to support
+            climate-smart agricultural production.
+          </p>
+          <div class="project-meta">
+            <span>FY 2024/25</span>
+            <span>Vihiga County</span>
+            <span>Agriculture &amp; Livelihoods</span>
+          </div>
+          <div class="project-details">
+            <p><strong>Tender No:</strong> TENDER/VCG/239/2024-2025</p>
+            <p><strong>Cost:</strong> Ksh 12,589,031.42 &nbsp;|&nbsp;
+              <strong>Expenditure:</strong> Ksh 4,149,939.44</p>
+            <p><strong>Period:</strong> 24th Apr 2025 – 24th Oct 2025</p>
+            <p><strong>Households:</strong> 150 &nbsp;|&nbsp;
+              <strong>Status:</strong> Completed.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES & PUBLICATIONS -->
+  <section id="resources" class="gallery-strip">
+    <div class="container">
+      <div class="gallery-head">
+        <h2>Resources &amp; Publications</h2>
+        <p class="dash-sub">
+          Policy briefs, technical guides, reports, and training materials supporting the
+          MERL rollout in Vihiga and other counties.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
+          <span class="g-caption">MERL Technical Guide</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-3.jpg" alt="Training toolkit cover">
+          <span class="g-caption">Training Toolkit (ToT)</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-4.jpg" alt="Validation report cover">
+          <span class="g-caption">Vihiga CCRI Pilot Report</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-5.jpg" alt="User manual cover">
+          <span class="g-caption">Dashboard User Manual</span>
+        </a>
+        <a href="#" class="g-item">
+          <img src="static/images/gallery-6.jpg" alt="Indicators brief cover">
+          <span class="g-caption">Climate Indicators Set</span>
+        </a>
+      </div>
+
+      <div class="gallery-cta">
+        <a href="#" class="btn btn-ghost">Browse All Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container contact-inner">
+
+      <h2>MERL Support – Vihiga County</h2>
+      <p class="contact-sub">
+        For technical assistance, dashboard access, or support on CCRI project reporting in Vihiga,
+        contact the MERL support team using the form below.
+      </p>
+
+      <form class="contact-form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
+        <div class="form-grid">
+
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" name="Name" required>
+          </div>
+
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="Email" required>
+          </div>
+
+          <div class="form-field">
+            <label>Designation / Role</label>
+            <input type="text" name="Designation" required>
+          </div>
+
+          <div class="form-field">
+            <label>County</label>
+            <input type="text" name="County" value="Vihiga" required>
+          </div>
+
+        </div>
+        <div class="form-field full">
+          <label>Message</label>
+          <textarea name="Message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">Send Message</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Government of Vihiga County. All rights reserved.</p>
+      <p>© <span id="year"></span> Government of Kenya – Vihiga County. All rights reserved.</p>
       <div class="footer-links">
         <a href="#">Privacy</a><span>·</span><a href="#">Terms</a><span>·</span><a href="#">Support</a>
       </div>
@@ -141,13 +569,49 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Require login: if not logged in, bounce to auth with redirect back here
-    const u = localStorage.getItem('merlUser');
-    if(!u){
-      location.replace("https://merl.agnes.africa/home");
+    // Footer year
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
     }
 
+    // Projects filter
+    (function () {
+      const form = document.getElementById('projects-filter-form');
+      if (!form) return;
+
+      const resetBtn = document.getElementById('filter-reset');
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+
+      function applyFilters() {
+        const year = form.year.value;
+        const county = form.county.value;
+        const sector = form.sector.value;
+
+        cards.forEach(card => {
+          const matchYear   = !year   || card.dataset.year   === year;
+          const matchCounty = !county || card.dataset.county === county;
+          const matchSector = !sector || card.dataset.sector === sector;
+
+          card.style.display = (matchYear && matchCounty && matchSector) ? '' : 'none';
+        });
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        applyFilters();
+      });
+
+      form.addEventListener('change', applyFilters);
+
+      resetBtn.addEventListener('click', function () {
+        form.reset();
+        applyFilters();
+      });
+
+      // Initial filter application (with default county pre-selected)
+      applyFilters();
+    })();
   </script>
 </body>
 </html>

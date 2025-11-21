@@ -848,3 +848,77 @@ img{ display:block; max-width:100%; }
     min-width: 100%;
   }
 }
+
+/* ===============================
+   VIHIGA-SPECIFIC TWEAKS
+================================ */
+
+/* Second logo in the brand area (Vihiga County icon) */
+.brand-logo-secondary {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+/* Dashboard card structure (used in Vihiga dashboard preview) */
+.dash-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.dash-card-head h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a365d;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef3fb;
+  color: var(--brand-2);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dash-main {
+  margin: 4px 0 6px;
+}
+
+.dash-foot {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Simple list style for “Key Investment Areas” */
+.list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ===============================
+   CCRI PROJECT DETAIL BLOCK
+================================ */
+.project-details {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.project-details p {
+  margin: 2px 0;
+}
