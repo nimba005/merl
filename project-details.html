@@ -1,0 +1,65 @@
+<script>
+  // Get ID from URL
+  const params = new URLSearchParams(window.location.search);
+  const projectId = params.get("id");
+
+  // Load JSON file
+  fetch("data/projects.json")
+    .then(response => response.json())
+    .then(data => {
+      const project = data[projectId];
+
+      if (!project) {
+        document.getElementById("project-content").innerHTML =
+          "<p>Project not found.</p>";
+        return;
+      }
+
+      // Fill fields
+      document.getElementById("title").textContent = project.title;
+      document.getElementById("objective").textContent = project.objective;
+      document.getElementById("cost").textContent = project.cost;
+      document.getElementById("status").textContent = project.status;
+      document.getElementById("dates").textContent =
+        project.startDate + " → " + project.endDate;
+
+      // Activities list
+      const activitiesList = document.getElementById("activities");
+      project.activities.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        activitiesList.appendChild(li);
+      });
+
+      // Location
+      document.getElementById("location").textContent =
+        project.location.subcounty + " - " + project.location.ward;
+
+      // Beneficiaries
+      document.getElementById("beneficiaries").textContent =
+        project.beneficiaries;
+    });
+</script>
+
+<h1 id="title"></h1>
+
+<h3>Objective</h3>
+<p id="objective"></p>
+
+<h3>Activities</h3>
+<ul id="activities"></ul>
+
+<h3>Location</h3>
+<p id="location"></p>
+
+<h3>Beneficiaries</h3>
+<p id="beneficiaries"></p>
+
+<h3>Project Cost</h3>
+<p id="cost"></p>
+
+<h3>Status</h3>
+<p id="status"></p>
+
+<h3>Timeline</h3>
+<p id="dates"></p>

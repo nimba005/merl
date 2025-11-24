@@ -207,6 +207,7 @@
             <span>Makueni County</span>
             <span>Water &amp; Sanitation</span>
           </div>
+          <a href="project-details.html?id=kikuu-water-project" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -223,6 +224,7 @@
             <span>Vihiga County</span>
             <span>Water &amp; Sanitation</span>
           </div>
+          <a href="project-details.html?id=kaila-water-project" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -239,6 +241,7 @@
             <span>Makueni County</span>
             <span>Agriculture</span>
           </div>
+          <a href="project-details.html?id=climate-smart-irrigation" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -255,10 +258,23 @@
             <span>Kitui County</span>
             <span>Roads &amp; Infrastructure</span>
           </div>
+          <a href="project-details.html?id=rural-access-roads" class="read-more-btn">Read More →</a>
         </article>
       </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('h3').textContent.trim();
+        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+        window.location.href = `project-details.html?id=${id}`;
+      });
+    });
+  </script>
+
 
 
   <!-- RESOURCES & PUBLICATIONS -->

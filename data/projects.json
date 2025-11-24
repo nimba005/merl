@@ -1,0 +1,236 @@
+{
+  "kikuu-water-project": {
+    "title": "Kikuu / Kiangini Community Water Project",
+    "objective": "The initiative supports Climate Smart water supply...",
+    "activities": [
+      "Solarization of the scheme",
+      "Installation of pumping submersible pump",
+      "Construction of 100m3 storage tanks",
+      "3km network distribution (main & connectivity)"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Emuhaya",
+      "ward": "Central Bunyore"
+    },
+    "beneficiaries": "345 households",
+    "cost": "21,990,866.35",
+    "status": "Completed and handed over",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "kaila-water-project": {
+    "title": "Kaila Climate-Resilient Water Project",
+    "objective": "To provide climate resilient water supply...",
+    "activities": [
+      "Pump installation",
+      "Installation of water kiosk",
+      "Solarization of pumping system",
+      "Piping works",
+      "Construction of concrete storage tank"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Luanda",
+      "ward": "Luanda South Ward"
+    },
+    "beneficiaries": "190 households",
+    "cost": "16,200,000.00",
+    "status": "Completed & in use",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "ebukhaya-community-water-project": {
+    "title": "Augmentation of Ebukhaya Community Water Project",
+    "objective": "The initiative supports Climate Smart water supply, enhancing resilience in Central and North East Bunyore wards.",
+    "activities": [
+      "Solarization of the scheme",
+      "Installation of submersible pump",
+      "Construction of 100m3 storage tanks",
+      "3km network distribution (main and connectivity)"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Emuhaya",
+      "ward": "Central Bunyore"
+    },
+    "beneficiaries": "345 households",
+    "cost": "21,990,866.35",
+    "status": "Completed, Paid & In Use",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "ekamanji-community-water-project": {
+    "title": "Ekamanji Community Climate Resilient Water Project",
+    "objective": "To provide a reliable and climate resilient water supply to communities in Luanda Township ward and adjacent areas.",
+    "activities": [
+      "Construction of water supply infrastructure (pipelines, storage tanks)",
+      "Commissioning and handover of the scheme",
+      "Community engagement and household connections",
+      "Maintenance planning and climate resilience measures",
+      "Monitoring and completion reporting"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Emuhaya",
+      "ward": "Luanda Township"
+    },
+    "beneficiaries": "115 households",
+    "cost": "12,598,740.00",
+    "status": "Completed, Paid & In Use (Managed by VIWASCO)",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "maragoli-hills-forest-rehabilitation": {
+    "title": "Rehabilitation of 70 Acres of Maragoli Hills Forest",
+    "objective": "To restore and rehabilitate Maragoli Hills by fencing degraded catchment areas and re-establishing forest cover.",
+    "activities": [
+      "Stakeholder engagement meetings",
+      "Fencing degraded catchment area",
+      "Purchase of indigenous seedlings & bamboo",
+      "Land preparation and planting",
+      "Gap filling and maintenance"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "",
+      "ward": "South Maragoli"
+    },
+    "beneficiaries": "N/A",
+    "cost": "9,380,224.00",
+    "status": "Completed & Paid (Under maintenance and managed by KFS)",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "mutave-jepsesi-bridge": {
+    "title": "Construction of Mutave–Jepsesi Bridge",
+    "objective": "To improve connectivity and resilience by constructing a durable bridge linking Mutave and Jepsesi localities.",
+    "activities": [
+      "Construction of foundations and abutments",
+      "Construction of bridge superstructure and decking",
+      "Approach works and drainage infrastructure"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Hamisi",
+      "ward": "Tambua"
+    },
+    "beneficiaries": "5000 households",
+    "cost": "13,158,344.00",
+    "status": "Completed & Paid",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "vigina-water-project": {
+    "title": "Equipping, Expansion and Solarization of Vigina Water Project",
+    "objective": "To improve and expand water supply services in Lyaduywa/Idzava Ward.",
+    "activities": [
+      "Construction of 50m3 water sump",
+      "Solarizing intake pump system",
+      "Installing submersible pump",
+      "Fencing intake works",
+      "Constructing elevated 50m3 tank",
+      "Laying 5km of distribution network"
+    ],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Sabatia",
+      "ward": "Idzava/Lyaduywa"
+    },
+    "beneficiaries": "143 households",
+    "cost": "14,442,824.43",
+    "status": "Completed & Fully Paid (Community Managed)",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "nadiradi-community-water-project": {
+    "title": "Augmentation of Nadiradi Community Water Project",
+    "objective": "To expand and strengthen the Nadiradi water supply infrastructure for sustained access to safe water.",
+    "activities": [
+      "Installation of 100,000-litre elevated steel tank on 12m tower",
+      "Laying 18km distribution pipelines",
+      "Connection to existing borehole system"
+    ],
+    "sourceOfFunds": "FLLoCA Program",
+    "location": {
+      "subcounty": "Sabatia",
+      "ward": "Busali"
+    },
+    "beneficiaries": "213 households",
+    "cost": "15,899,748.75",
+    "status": "Completed & Fully Paid (Community Managed)",
+    "startDate": "20th September 2024",
+    "endDate": "20th December 2024"
+  },
+
+  "kaptik-mwala-water-project": {
+    "title": "Construction of Kaptik–Mwala Community Climate Resilient Water Project",
+    "objective": "To expand and strengthen water supply infrastructure in Kaptik-Mwala area.",
+    "activities": [],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Hamisi",
+      "ward": "Shiru"
+    },
+    "beneficiaries": "182 households",
+    "cost": "22,337,766.00",
+    "status": "Completed & Fully Paid",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "kegondi-community-water-project": {
+    "title": "Construction of Kegondi Community Climate Resilient Water Project",
+    "objective": "To provide a reliable, climate resilient water supply system to the Kegondi community.",
+    "activities": [],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Sabatia",
+      "ward": "West Sabatia"
+    },
+    "beneficiaries": "135 households",
+    "cost": "12,097,795.15",
+    "status": "Completed & Fully Paid",
+    "startDate": "2nd September 2024",
+    "endDate": "2nd December 2024"
+  },
+
+  "south-maragoli-apiculture-project": {
+    "title": "Completion & Commercialization of South Maragoli Apiculture Project",
+    "objective": "",
+    "activities": [],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "",
+      "ward": "South Maragoli"
+    },
+    "beneficiaries": "N/A",
+    "cost": "22,337,766.00",
+    "status": "Works Ongoing (70% Complete)",
+    "startDate": "14th March 2025",
+    "endDate": "14th June 2025"
+  },
+
+  "buhani-irrigation-project": {
+    "title": "Completion and Commercialization of Buhani Irrigation Project",
+    "objective": "To enable farmers to shift from subsistence to commercially viable irrigated agriculture.",
+    "activities": [],
+    "sourceOfFunds": "FLLoCA",
+    "location": {
+      "subcounty": "Vihiga",
+      "ward": "Mungoma"
+    },
+    "beneficiaries": "150 households",
+    "cost": "12,589,031.42",
+    "status": "Completed",
+    "startDate": "24th April 2025",
+    "endDate": "24th October 2025"
+  }
+}

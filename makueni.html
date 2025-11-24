@@ -226,6 +226,7 @@
             <p><strong>Location:</strong> Kikuu &amp; Kiangini areas</p>
             <p><strong>Focus:</strong> Domestic water supply, storage and distribution.</p>
           </div>
+          <a href="project-details.html?id=kikuu-community-water-project" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -246,6 +247,7 @@
             <p><strong>Location:</strong> Selected wards in Kilome and Mbooni.</p>
             <p><strong>Focus:</strong> Climate-smart irrigation &amp; improved agronomy.</p>
           </div>
+          <a href="project-details.html?id=smallholder-climate-smart-irrigation" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -266,6 +268,7 @@
             <p><strong>Location:</strong> Multiple wards in Kaiti and Kibwezi.</p>
             <p><strong>Focus:</strong> Climate-resilient transport corridors.</p>
           </div>
+          <a href="project-details.html?id=ward-access-roads-flood-control" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -286,6 +289,7 @@
             <p><strong>Location:</strong> Sub-county hospitals and high-volume dispensaries.</p>
             <p><strong>Focus:</strong> Infrastructure, energy access, and equipment.</p>
           </div>
+          <a href="project-details.html?id=health-centre-upgrade-solarization" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -306,6 +310,7 @@
             <p><strong>Location:</strong> ASAL wards with recurrent drought stress.</p>
             <p><strong>Focus:</strong> Groundwater development &amp; energy efficiency.</p>
           </div>
+          <a href="project-details.html?id=borehole-drilling-solar-pumping" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -326,11 +331,24 @@
             <p><strong>Location:</strong> County headquarters.</p>
             <p><strong>Focus:</strong> Early warning systems &amp; coordination capacity.</p>
           </div>
+          <a href="project-details.html?id=disaster-operations-early-warning-centre" class="read-more-btn">Read More →</a>
         </article>
 
       </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('h3').textContent.trim();
+        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+        window.location.href = `project-details.html?id=${id}`;
+      });
+    });
+  </script>
+
 
   <!-- RESOURCES & PUBLICATIONS -->
   <section id="resources" class="gallery-strip">

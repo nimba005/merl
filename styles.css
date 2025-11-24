@@ -922,3 +922,14 @@ img{ display:block; max-width:100%; }
 .project-details p {
   margin: 2px 0;
 }
+.read-more-btn {
+  display: inline-block;
+  margin-top: 12px;
+  color: #0057b8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.read-more-btn:hover {
+  text-decoration: underline;
+}
