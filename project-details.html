@@ -1,65 +1,587 @@
-<script>
-  // Get ID from URL
-  const params = new URLSearchParams(window.location.search);
-  const projectId = params.get("id");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Project Details | MERL TOOL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Minimal styling so it looks good even before you tweak styles.css */
+    .details-wrap { padding: 32px 0 56px; }
+    .details-top { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom: 18px; }
+    .back-link { text-decoration:none; font-weight:600; }
+    .project-pane, .default-pane { display:none; }
+    .project-pane:target { display:block; }
+    .default-pane { display:block; }
+    .project-pane:target ~ .default-pane { display:none; }
 
-  // Load JSON file
-  fetch("data/projects.json")
-    .then(response => response.json())
-    .then(data => {
-      const project = data[projectId];
+    .detail-card { background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:18px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .detail-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:16px; }
+    @media (max-width: 900px){ .detail-grid { grid-template-columns: 1fr; } }
 
-      if (!project) {
-        document.getElementById("project-content").innerHTML =
-          "<p>Project not found.</p>";
-        return;
-      }
+    .meta-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top: 14px; }
+    @media (max-width: 520px){ .meta-grid { grid-template-columns: 1fr; } }
+    .meta-item { background: rgba(0,0,0,.03); border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:12px; }
+    .meta-k { font-size: 12px; opacity:.75; margin-bottom: 2px; }
+    .meta-v { font-weight: 700; }
 
-      // Fill fields
-      document.getElementById("title").textContent = project.title;
-      document.getElementById("objective").textContent = project.objective;
-      document.getElementById("cost").textContent = project.cost;
-      document.getElementById("status").textContent = project.status;
-      document.getElementById("dates").textContent =
-        project.startDate + " → " + project.endDate;
+    .muted { opacity:.75; }
+    .pillx { display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.08); font-weight:600; font-size:12px; }
+    ul.clean { margin: 10px 0 0; padding-left: 18px; }
+    .hr { height:1px; background: rgba(0,0,0,.08); margin: 16px 0; }
 
-      // Activities list
-      const activitiesList = document.getElementById("activities");
-      project.activities.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        activitiesList.appendChild(li);
-      });
+    .project-list { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; margin-top: 14px; }
+    @media (max-width: 720px){ .project-list { grid-template-columns: 1fr; } }
+    .project-link { display:block; padding:14px; border-radius:16px; border:1px solid rgba(0,0,0,.08); background:#fff; text-decoration:none; box-shadow: 0 8px 24px rgba(0,0,0,.04); }
+    .project-link b { display:block; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
 
-      // Location
-      document.getElementById("location").textContent =
-        project.location.subcounty + " - " + project.location.ward;
+  <!-- NAVBAR (same as index) -->
+  <header class="navbar">
+    <div class="nav-inner container">
+      <a class="brand" href="index.html">
+        <img src="static/images/coat-of-arms.png" alt="County Logo" class="brand-logo">
+        <span class="brand-text">MERL TOOL</span>
+      </a>
 
-      // Beneficiaries
-      document.getElementById("beneficiaries").textContent =
-        project.beneficiaries;
-    });
-</script>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
 
-<h1 id="title"></h1>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <div class="has-dd">
+          <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Counties</a>
+          <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
+          <label for="dd-counties" class="dd-caret" aria-hidden="true"></label>
 
-<h3>Objective</h3>
-<p id="objective"></p>
+          <div class="dropdown">
+            <a href="vihiga.html">Vihiga County</a>
+            <a href="makueni.html">Makueni County</a>
+          </div>
+        </div>
+        <a href="https://merl.agnes.africa/home" class="btn btn-login">Login</a>
+      </nav>
+    </div>
+  </header>
 
-<h3>Activities</h3>
-<ul id="activities"></ul>
+  <main class="container details-wrap">
 
-<h3>Location</h3>
-<p id="location"></p>
+    <!-- PROJECT 1 -->
+    <section id="kikuu-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
 
-<h3>Beneficiaries</h3>
-<p id="beneficiaries"></p>
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Kikuu / Kiangini Community Water Project</h1>
+          <p class="muted">Objective: The initiative supports Climate Smart water supply...</p>
 
-<h3>Project Cost</h3>
-<p id="cost"></p>
+          <div class="hr"></div>
 
-<h3>Status</h3>
-<p id="status"></p>
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Solarization of the scheme</li>
+            <li>Installation of pumping submersible pump</li>
+            <li>Construction of 100m3 storage tanks</li>
+            <li>3km network distribution (main &amp; connectivity)</li>
+          </ul>
+        </article>
 
-<h3>Timeline</h3>
-<p id="dates"></p>
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">21,990,866.35</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed and handed over</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">345 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Emuhaya</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Central Bunyore</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 2 -->
+    <section id="kaila-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Kaila Climate-Resilient Water Project</h1>
+          <p class="muted">Objective: To provide climate resilient water supply...</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Pump installation</li>
+            <li>Installation of water kiosk</li>
+            <li>Solarization of pumping system</li>
+            <li>Piping works</li>
+            <li>Construction of concrete storage tank</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">16,200,000.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; in use</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">190 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Luanda</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Luanda South Ward</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 3 -->
+    <section id="ebukhaya-community-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Augmentation of Ebukhaya Community Water Project</h1>
+          <p class="muted">Objective: The initiative supports Climate Smart water supply, enhancing resilience in Central and North East Bunyore wards.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Solarization of the scheme</li>
+            <li>Installation of submersible pump</li>
+            <li>Construction of 100m3 storage tanks</li>
+            <li>3km network distribution (main and connectivity)</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">21,990,866.35</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed, Paid &amp; In Use</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">345 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Emuhaya</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Central Bunyore</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 4 -->
+    <section id="ekamanji-community-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Ekamanji Community Climate Resilient Water Project</h1>
+          <p class="muted">Objective: To provide a reliable and climate resilient water supply to communities in Luanda Township ward and adjacent areas.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Construction of water supply infrastructure (pipelines, storage tanks)</li>
+            <li>Commissioning and handover of the scheme</li>
+            <li>Community engagement and household connections</li>
+            <li>Maintenance planning and climate resilience measures</li>
+            <li>Monitoring and completion reporting</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">12,598,740.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed, Paid &amp; In Use (Managed by VIWASCO)</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">115 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Emuhaya</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Luanda Township</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 5 -->
+    <section id="maragoli-hills-forest-rehabilitation" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Rehabilitation of 70 Acres of Maragoli Hills Forest</h1>
+          <p class="muted">Objective: To restore and rehabilitate Maragoli Hills by fencing degraded catchment areas and re-establishing forest cover.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Stakeholder engagement meetings</li>
+            <li>Fencing degraded catchment area</li>
+            <li>Purchase of indigenous seedlings &amp; bamboo</li>
+            <li>Land preparation and planting</li>
+            <li>Gap filling and maintenance</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">9,380,224.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Paid (Under maintenance and managed by KFS)</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">N/A</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">&nbsp;</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">South Maragoli</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 6 -->
+    <section id="mutave-jepsesi-bridge" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Construction of Mutave–Jepsesi Bridge</h1>
+          <p class="muted">Objective: To improve connectivity and resilience by constructing a durable bridge linking Mutave and Jepsesi localities.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Construction of foundations and abutments</li>
+            <li>Construction of bridge superstructure and decking</li>
+            <li>Approach works and drainage infrastructure</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">13,158,344.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Paid</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">5000 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Hamisi</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Tambua</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 7 -->
+    <section id="vigina-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Equipping, Expansion and Solarization of Vigina Water Project</h1>
+          <p class="muted">Objective: To improve and expand water supply services in Lyaduywa/Idzava Ward.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Construction of 50m3 water sump</li>
+            <li>Solarizing intake pump system</li>
+            <li>Installing submersible pump</li>
+            <li>Fencing intake works</li>
+            <li>Constructing elevated 50m3 tank</li>
+            <li>Laying 5km of distribution network</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">14,442,824.43</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Fully Paid (Community Managed)</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">143 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Sabatia</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Idzava/Lyaduywa</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 8 -->
+    <section id="nadiradi-community-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Augmentation of Nadiradi Community Water Project</h1>
+          <p class="muted">Objective: To expand and strengthen the Nadiradi water supply infrastructure for sustained access to safe water.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <ul class="clean">
+            <li>Installation of 100,000-litre elevated steel tank on 12m tower</li>
+            <li>Laying 18km distribution pipelines</li>
+            <li>Connection to existing borehole system</li>
+          </ul>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA Program</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">15,899,748.75</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Fully Paid (Community Managed)</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">213 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Sabatia</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Busali</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">20th September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">20th December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 9 -->
+    <section id="kaptik-mwala-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Construction of Kaptik–Mwala Community Climate Resilient Water Project</h1>
+          <p class="muted">Objective: To expand and strengthen water supply infrastructure in Kaptik-Mwala area.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <p class="muted">Activities not yet listed.</p>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">22,337,766.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Fully Paid</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">182 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Hamisi</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Shiru</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 10 -->
+    <section id="kegondi-community-water-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Construction of Kegondi Community Climate Resilient Water Project</h1>
+          <p class="muted">Objective: To provide a reliable, climate resilient water supply system to the Kegondi community.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <p class="muted">Activities not yet listed.</p>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">12,097,795.15</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed &amp; Fully Paid</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">135 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Sabatia</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">West Sabatia</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">2nd September 2024</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">2nd December 2024</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 11 -->
+    <section id="south-maragoli-apiculture-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Completion &amp; Commercialization of South Maragoli Apiculture Project</h1>
+          <p class="muted">Objective: (Not provided)</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <p class="muted">Activities not yet listed.</p>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">22,337,766.00</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Works Ongoing (70% Complete)</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">N/A</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">&nbsp;</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">South Maragoli</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">14th March 2025</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">14th June 2025</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECT 12 -->
+    <section id="buhani-irrigation-project" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+
+      <div class="detail-grid">
+        <article class="detail-card">
+          <h1>Completion and Commercialization of Buhani Irrigation Project</h1>
+          <p class="muted">Objective: To enable farmers to shift from subsistence to commercially viable irrigated agriculture.</p>
+
+          <div class="hr"></div>
+
+          <h3>Key Activities</h3>
+          <p class="muted">Activities not yet listed.</p>
+        </article>
+
+        <aside class="detail-card">
+          <h3>Project Snapshot</h3>
+          <div class="meta-grid">
+            <div class="meta-item"><div class="meta-k">Source of Funds</div><div class="meta-v">FLLoCA</div></div>
+            <div class="meta-item"><div class="meta-k">Cost (Ksh)</div><div class="meta-v">12,589,031.42</div></div>
+            <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v">Completed</div></div>
+            <div class="meta-item"><div class="meta-k">Beneficiaries</div><div class="meta-v">150 households</div></div>
+            <div class="meta-item"><div class="meta-k">Subcounty</div><div class="meta-v">Vihiga</div></div>
+            <div class="meta-item"><div class="meta-k">Ward</div><div class="meta-v">Mungoma</div></div>
+            <div class="meta-item"><div class="meta-k">Start Date</div><div class="meta-v">24th April 2025</div></div>
+            <div class="meta-item"><div class="meta-k">End Date</div><div class="meta-v">24th October 2025</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OPTIONAL PLACEHOLDERS for cards you currently show on index.html but are not in your JSON -->
+    <section id="climate-smart-irrigation" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+      <article class="detail-card">
+        <h1>Climate-Smart Irrigation for Smallholders</h1>
+        <p class="muted">This project is listed on the homepage but details are not yet populated in the dataset.</p>
+      </article>
+    </section>
+
+    <section id="rural-access-roads" class="project-pane">
+      <div class="details-top">
+        <a class="back-link" href="index.html#projects">← Back to Projects</a>
+        <span class="pillx">Project Details</span>
+      </div>
+      <article class="detail-card">
+        <h1>Rural Access Roads &amp; Flood Control</h1>
+        <p class="muted">This project is listed on the homepage but details are not yet populated in the dataset.</p>
+      </article>
+    </section>
+
+    <!-- DEFAULT VIEW (shows when no #hash is provided) -->
+    <section class="default-pane detail-card">
+      <h1>Select a Project</h1>
+      <p class="muted">Open a project from the homepage, or pick one below.</p>
+
+      <div class="project-list">
+        <a class="project-link" href="#kikuu-water-project"><b>Kikuu / Kiangini Community Water Project</b><span class="muted">Water supply (FLLoCA)</span></a>
+        <a class="project-link" href="#kaila-water-project"><b>Kaila Climate-Resilient Water Project</b><span class="muted">Water infrastructure (FLLoCA)</span></a>
+        <a class="project-link" href="#ebukhaya-community-water-project"><b>Ebukhaya Community Water Project</b><span class="muted">Augmentation (FLLoCA)</span></a>
+        <a class="project-link" href="#ekamanji-community-water-project"><b>Ekamanji Community Water Project</b><span class="muted">Water supply (FLLoCA)</span></a>
+        <a class="project-link" href="#maragoli-hills-forest-rehabilitation"><b>Maragoli Hills Forest Rehabilitation</b><span class="muted">Ecosystem restoration (FLLoCA)</span></a>
+        <a class="project-link" href="#mutave-jepsesi-bridge"><b>Mutave–Jepsesi Bridge</b><span class="muted">Infrastructure resilience (FLLoCA)</span></a>
+        <a class="project-link" href="#vigina-water-project"><b>Vigina Water Project</b><span class="muted">Expansion &amp; solarization (FLLoCA)</span></a>
+        <a class="project-link" href="#nadiradi-community-water-project"><b>Nadiradi Community Water Project</b><span class="muted">Augmentation (FLLoCA)</span></a>
+        <a class="project-link" href="#kaptik-mwala-water-project"><b>Kaptik–Mwala Water Project</b><span class="muted">Construction (FLLoCA)</span></a>
+        <a class="project-link" href="#kegondi-community-water-project"><b>Kegondi Water Project</b><span class="muted">Construction (FLLoCA)</span></a>
+        <a class="project-link" href="#south-maragoli-apiculture-project"><b>South Maragoli Apiculture Project</b><span class="muted">Commercialization (FLLoCA)</span></a>
+        <a class="project-link" href="#buhani-irrigation-project"><b>Buhani Irrigation Project</b><span class="muted">Irrigation commercialization (FLLoCA)</span></a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Government of Kenya. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a><span>·</span><a href="#">Terms</a><span>·</span><a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

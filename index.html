@@ -207,7 +207,7 @@
             <span>Makueni County</span>
             <span>Water &amp; Sanitation</span>
           </div>
-          <a href="project-details.html?id=kikuu-water-project" class="read-more-btn">Read More →</a>
+          <a href="project-details.html#kikuu-water-project" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -224,7 +224,7 @@
             <span>Vihiga County</span>
             <span>Water &amp; Sanitation</span>
           </div>
-          <a href="project-details.html?id=kaila-water-project" class="read-more-btn">Read More →</a>
+          <a href="project-details.html#kaila-water-project" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -241,7 +241,7 @@
             <span>Makueni County</span>
             <span>Agriculture</span>
           </div>
-          <a href="project-details.html?id=climate-smart-irrigation" class="read-more-btn">Read More →</a>
+          <a href="project-details.html#climate-smart-irrigation" class="read-more-btn">Read More →</a>
         </article>
 
         <article class="project-card"
@@ -258,7 +258,7 @@
             <span>Kitui County</span>
             <span>Roads &amp; Infrastructure</span>
           </div>
-          <a href="project-details.html?id=rural-access-roads" class="read-more-btn">Read More →</a>
+          <a href="project-details.html#rural-access-roads" class="read-more-btn">Read More →</a>
         </article>
       </div>
     </div>
@@ -266,14 +266,33 @@
 
   <script>
     document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.querySelector('h3').textContent.trim();
-        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const link = card.querySelector('.read-more-btn');
+      if (!link) return;
 
-        window.location.href = `project-details.html?id=${id}`;
+      // Make entire card clickable + keyboard accessible
+      card.setAttribute('role', 'link');
+      card.tabIndex = 0;
+
+      const go = () => window.location.href = link.getAttribute('href');
+
+      card.addEventListener('click', (e) => {
+        // Don't hijack clicks on actual interactive elements
+        if (e.target.closest('a,button,input,select,textarea,label')) return;
+        go();
       });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          go();
+        }
+      });
+
+      // Stop bubbling when user clicks the link itself
+      link.addEventListener('click', (e) => e.stopPropagation());
     });
   </script>
+
 
 
 
