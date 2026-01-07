@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>MERL TOOL – Makueni County Dashboard</title>
+  <title>MERL TOOL – Makueni County</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-inner container">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="MERL Tool Home">
         <img src="static/images/coat-of-arms.png" alt="Kenya Coat of Arms" class="brand-logo">
         <img src="static/images/makueni-logo.png" alt="Makueni County Logo" class="brand-logo brand-logo-secondary">
-        <span class="brand-text">MERL TOOL – Makueni County</span>
+        <span class="brand-text">MERL TOOL</span>
       </a>
 
       <!-- Mobile menu toggle -->
@@ -25,7 +30,7 @@
         <span></span><span></span><span></span>
       </label>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="index.html">Home</a>
 
         <div class="has-dd">
@@ -33,7 +38,7 @@
           <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
           <label for="dd-counties" class="dd-caret" aria-hidden="true"></label>
 
-          <div class="dropdown">
+          <div class="dropdown" role="menu" aria-label="Counties menu">
             <a href="vihiga.html">Vihiga County</a>
             <a href="makueni.html" class="active">Makueni County</a>
           </div>
@@ -44,396 +49,385 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner container">
-      <div class="hero-media">
-        <img src="static/images/makueni-county.png" alt="Makueni climate-resilient projects">
-      </div>
+  <main id="main">
+    <!-- PAGE HEADER / BREADCRUMB -->
+    <section class="page-head">
+      <div class="container page-head-inner">
+        <div class="page-kicker">
+          <span class="county-badge" aria-label="County badge">Makueni County</span>
+          <span class="page-meta">County Dashboard</span>
+        </div>
 
-      <div class="hero-copy">
-        <h1 class="hero-rotator" aria-label="Makueni County – Climate Investment Dashboard">
-          <span class="slide">Makueni County</span>
-          <span class="slide">Climate-Resilient Investments Dashboard</span>
-          <span class="slide">Monitoring, Evaluation, Reporting &amp; Learning</span>
-        </h1>
-
-        <div class="divider"></div>
-
-        <p class="lead">
-          This Makueni County dashboard provides a structured MERL view of climate-related
-          and public service investments across key sectors. It tracks project progress,
-          budget utilization, and service delivery outcomes to support evidence-based
-          planning and accountability.
-        </p>
-
-        <div class="quick-stats">
-          <div class="qs-header">Quick Stats – Makueni (All Projects)</div>
-          <div class="cards">
-            <article class="stat-card">
-              <h3>All Projects</h3>
-              <div class="stat-number">14</div>
-              <!--<div class="stat-sub">Budget Ksh 1,980,000,000</div>-->
-            </article>
-            <article class="stat-card">
-              <h3>Completed Projects</h3>
-              <div class="stat-number">0</div>
-              <div class="stat-sub">Completed in the last 12 months</div>
-            </article>
-            <article class="stat-card">
-              <h3>Ongoing Projects</h3>
-              <div class="stat-number">14</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-            <article class="stat-card">
-              <h3>Not Started</h3>
-              <div class="stat-number warn">0</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-          </div>
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">›</span>
+          <span>Counties</span>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Makueni</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- DASHBOARD PREVIEW -->
-  <section id="dashboard" class="dash-preview">
-    <div class="container">
-      <div class="dash-head">
-        <h2>Makueni Climate Investment Analytics</h2>
-        <p class="dash-sub">
-          Visual insights on project locations, budget absorption, sectoral priorities and
-          service delivery outcomes across Makueni County.
-        </p>
-        <a href="https://merl.agnes.africa/home" class="btn btn-cta">Open Makueni Dashboard</a>
+    <!-- HERO -->
+    <section class="hero hero--county">
+      <div class="hero-inner container">
+        <div class="hero-media">
+          <img src="static/images/makueni-county.png" alt="Makueni climate-resilient projects">
+        </div>
+
+        <div class="hero-copy">
+          <h1 class="hero-rotator" aria-label="Makueni County – MERL Dashboard">
+            <span class="slide">Makueni County</span>
+            <span class="slide">Climate Investment Dashboard</span>
+            <span class="slide">Monitoring, Evaluation, Reporting &amp; Learning</span>
+          </h1>
+
+          <div class="divider"></div>
+
+          <p class="lead">
+            This Makueni County dashboard provides a structured MERL view of climate-related
+            and public service investments across key sectors. It tracks project progress,
+            budget utilization, and service delivery outcomes to support evidence-based
+            planning and accountability.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#dashboard" class="btn btn-ghost">Explore Analytics</a>
+            <a href="#projects" class="btn btn-cta">Browse Projects</a>
+          </div>
+
+          <div class="quick-stats" aria-label="Quick stats">
+            <div class="qs-header">Quick Stats – Makueni (All Projects)</div>
+            <div class="cards">
+              <article class="stat-card">
+                <h3>All Projects</h3>
+                <div class="stat-number">14</div>
+              </article>
+
+              <article class="stat-card">
+                <h3>Ongoing Projects</h3>
+                <div class="stat-number">14</div>
+                <div class="stat-sub">&nbsp;</div>
+              </article>
+
+              <article class="stat-card">
+                <h3>Not Started</h3>
+                <div class="stat-number warn">0</div>
+                <div class="stat-sub">&nbsp;</div>
+              </article>
+
+              <article class="stat-card">
+                <h3>Completed Projects</h3>
+                <div class="stat-number warn">0</div>
+                <div class="stat-sub">Completed in the last 12 months</div>
+              </article>
+            </div>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <div class="dash-grid">
-        <article class="dash-card">
-          <div class="dash-card-head">
-            <h3>Budget Utilization</h3>
-            <span class="pill">FY 2024/25</span>
-          </div>
-          <div class="dash-main">
-            <div class="big-number">Coming soon</div>
-            <div class="muted">of allocated development budget absorbed</div>
-          </div>
-          <div class="dash-foot">Data sync via MERL backend</div>
-        </article>
+    <!-- DASHBOARD PREVIEW -->
+    <section id="dashboard" class="dash-preview">
+      <div class="container">
+        <div class="dash-head">
+          <h2>Makueni Climate Investment Analytics</h2>
+          <p class="dash-sub">
+            Visual insights on project locations, budget absorption, sectoral priorities and
+            service delivery outcomes across Makueni County.
+          </p>
+          <a href="https://merl.agnes.africa/home" class="btn btn-cta">Open Makueni Dashboard</a>
+        </div>
 
-        <article class="dash-card">
-          <div class="dash-card-head">
-            <h3>Top Investment Areas</h3>
-            <span class="pill">Current Portfolio</span>
-          </div>
-          <ul class="list">
-            <li>Water supply, boreholes &amp; small dams</li>
-            <li>Climate-smart irrigation &amp; agriculture</li>
-            <li>Health facilities &amp; service upgrades</li>
-            <li>Roads, markets &amp; disaster preparedness</li>
-          </ul>
-          <div class="dash-foot"><a href="#projects">Browse project portfolio →</a></div>
-        </article>
+        <div class="dash-grid">
+          <article class="dash-card">
+            <div class="dash-card-head">
+              <h3>Budget Utilization</h3>
+              <span class="pill">FY 2024/25</span>
+            </div>
+            <div class="dash-main">
+              <div class="big-number">Coming soon</div>
+              <div class="muted">of allocated development budget absorbed</div>
+            </div>
+            <div class="dash-foot">Data sync via MERL backend</div>
+          </article>
 
-        <article class="dash-card indicators-card">
-          <div class="dash-card-head">
-            <h3>Key Indicators</h3>
-            <span class="pill">MERL</span>
+          <article class="dash-card">
+            <div class="dash-card-head">
+              <h3>Top Investment Areas</h3>
+              <span class="pill">Current Portfolio</span>
+            </div>
+            <ul class="list">
+              <li>Water supply, boreholes &amp; small dams</li>
+              <li>Climate-smart irrigation &amp; agriculture</li>
+              <li>Health facilities &amp; service upgrades</li>
+              <li>Roads, markets &amp; disaster preparedness</li>
+            </ul>
+            <div class="dash-foot"><a href="#projects">Browse project portfolio →</a></div>
+          </article>
+
+          <article class="dash-card indicators-card">
+            <div class="dash-card-head">
+              <h3>Key Indicators</h3>
+              <span class="pill">MERL</span>
+            </div>
+            <div class="dash-main">
+              <p>
+                Track indicators such as households reached with water, irrigated acreage,
+                functional health facilities, and kilometres of improved access roads.
+              </p>
+            </div>
+            <div class="dash-foot"><a href="#">Download indicator set (coming soon)</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS EXPLORER -->
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <div class="projects-head">
+          <h2>Makueni Climate Investment Projects</h2>
+          <p class="dash-sub">
+            Browse Makueni projects and filter by year and sector to see where climate and
+            development resources are flowing.
+          </p>
+        </div>
+
+        <!-- FILTER BAR -->
+        <form class="projects-filters" id="projects-filter-form">
+          <div class="filter-group">
+            <label for="filter-year">Year</label>
+            <select id="filter-year" name="year">
+              <option value="">All years</option>
+              <option value="2024">2024/2025</option>
+              <option value="2023">2023/2024</option>
+              <option value="2022">2022/2023</option>
+            </select>
           </div>
-          <div class="dash-main">
+
+          <div class="filter-group">
+            <label for="filter-county">County</label>
+            <select id="filter-county" name="county">
+              <option value="">All counties</option>
+              <option value="Makueni" selected>Makueni</option>
+              <option value="Vihiga">Vihiga</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-sector">Sector</label>
+            <select id="filter-sector" name="sector">
+              <option value="">All sectors</option>
+              <option value="Water">Water &amp; Sanitation</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Health">Health</option>
+              <option value="Infrastructure">Roads &amp; Infrastructure</option>
+            </select>
+          </div>
+
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-cta filter-btn">Filter</button>
+            <button type="button" class="btn btn-ghost filter-reset" id="filter-reset">Reset</button>
+          </div>
+        </form>
+
+        <!-- PROJECT CARDS -->
+        <div class="projects-grid" id="projects-grid">
+          <article class="project-card" data-year="2024" data-county="Makueni" data-sector="Water">
+            <h3>Kikuu / Kiangini Community Water Project</h3>
             <p>
-              Track indicators such as households reached with water, irrigated acreage,
-              functional health facilities, and kilometres of improved access roads.
+              Construction and augmentation of a community water supply system to improve
+              household access to safe water under climate stress.
             </p>
-          </div>
-          <div class="dash-foot"><a href="#">Download indicator set (coming soon)</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
+            <div class="project-meta">
+              <span>FY 2024/25</span>
+              <span>Makueni County</span>
+              <span>Water &amp; Sanitation</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> Kikuu &amp; Kiangini areas</p>
+              <p><strong>Focus:</strong> Domestic water supply, storage and distribution.</p>
+            </div>
+            <a href="project-details.html#kikuu-community-water-project" class="read-more-btn">Read More →</a>
+          </article>
 
-  <!-- PROJECTS EXPLORER – MAKUENI -->
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <div class="projects-head">
-        <h2>Makueni Climate Investment Projects</h2>
-        <p class="dash-sub">
-          Browse Makueni projects and filter by year, sector, and ward-level investments
-          to see where climate and development resources are flowing.
+          <article class="project-card" data-year="2024" data-county="Makueni" data-sector="Agriculture">
+            <h3>Smallholder Climate-Smart Irrigation Scheme</h3>
+            <p>
+              Drip irrigation and on-farm water harvesting for smallholder farmers to reduce
+              climate risk, stabilize yields, and support high-value crops.
+            </p>
+            <div class="project-meta">
+              <span>FY 2024/25</span>
+              <span>Makueni County</span>
+              <span>Agriculture</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> Selected wards in Kilome and Mbooni.</p>
+              <p><strong>Focus:</strong> Climate-smart irrigation &amp; improved agronomy.</p>
+            </div>
+            <a href="project-details.html#smallholder-climate-smart-irrigation" class="read-more-btn">Read More →</a>
+          </article>
+
+          <article class="project-card" data-year="2023" data-county="Makueni" data-sector="Infrastructure">
+            <h3>Ward Access Roads &amp; Flood Control Structures</h3>
+            <p>
+              Upgrading critical access roads with drainage and flood-protection structures
+              to keep markets and health facilities reachable during heavy rains.
+            </p>
+            <div class="project-meta">
+              <span>FY 2023/24</span>
+              <span>Makueni County</span>
+              <span>Roads &amp; Infrastructure</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> Multiple wards in Kaiti and Kibwezi.</p>
+              <p><strong>Focus:</strong> Climate-resilient transport corridors.</p>
+            </div>
+            <a href="project-details.html#ward-access-roads-flood-control" class="read-more-btn">Read More →</a>
+          </article>
+
+          <article class="project-card" data-year="2023" data-county="Makueni" data-sector="Health">
+            <h3>Health Centre Upgrade &amp; Solarization</h3>
+            <p>
+              Expansion and solarization of selected health centres to improve service
+              delivery and ensure reliable power during climate-related outages.
+            </p>
+            <div class="project-meta">
+              <span>FY 2023/24</span>
+              <span>Makueni County</span>
+              <span>Health</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> Sub-county hospitals and high-volume dispensaries.</p>
+              <p><strong>Focus:</strong> Infrastructure, energy access, and equipment.</p>
+            </div>
+            <a href="project-details.html#health-centre-upgrade-solarization" class="read-more-btn">Read More →</a>
+          </article>
+
+          <article class="project-card" data-year="2022" data-county="Makueni" data-sector="Water">
+            <h3>Borehole Drilling &amp; Solar Pumping Programme</h3>
+            <p>
+              Drilling, equipping, and solarizing community boreholes to support domestic,
+              livestock and small-scale irrigation water supply.
+            </p>
+            <div class="project-meta">
+              <span>FY 2022/23</span>
+              <span>Makueni County</span>
+              <span>Water &amp; Sanitation</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> ASAL wards with recurrent drought stress.</p>
+              <p><strong>Focus:</strong> Groundwater development &amp; energy efficiency.</p>
+            </div>
+            <a href="project-details.html#borehole-drilling-solar-pumping" class="read-more-btn">Read More →</a>
+          </article>
+
+          <article class="project-card" data-year="2022" data-county="Makueni" data-sector="Infrastructure">
+            <h3>County Disaster Operations &amp; Early Warning Centre</h3>
+            <p>
+              Establishment of a disaster operations centre to coordinate early warning,
+              response, and recovery for climate-related hazards.
+            </p>
+            <div class="project-meta">
+              <span>FY 2022/23</span>
+              <span>Makueni County</span>
+              <span>Roads &amp; Infrastructure</span>
+            </div>
+            <div class="project-details">
+              <p><strong>Location:</strong> County headquarters.</p>
+              <p><strong>Focus:</strong> Early warning systems &amp; coordination capacity.</p>
+            </div>
+            <a href="project-details.html#disaster-operations-early-warning-centre" class="read-more-btn">Read More →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="gallery-strip">
+      <div class="container">
+        <div class="gallery-head">
+          <h2>Resources &amp; Publications</h2>
+          <p class="dash-sub">
+            Policy briefs, technical guides, reports, and training materials supporting the
+            MERL rollout in Makueni and other counties.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <a href="#" class="g-item">
+            <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
+            <span class="g-caption">MERL Technical Guide</span>
+          </a>
+          <a href="#" class="g-item">
+            <img src="static/images/gallery-3.jpg" alt="Training toolkit cover">
+            <span class="g-caption">Training Toolkit (ToT)</span>
+          </a>
+          <a href="#" class="g-item">
+            <img src="static/images/gallery-4.jpg" alt="County report cover">
+            <span class="g-caption">Makueni Pilot Report</span>
+          </a>
+          <a href="#" class="g-item">
+            <img src="static/images/gallery-5.jpg" alt="User manual cover">
+            <span class="g-caption">Dashboard User Manual</span>
+          </a>
+          <a href="#" class="g-item">
+            <img src="static/images/gallery-6.jpg" alt="Indicators brief cover">
+            <span class="g-caption">Climate Indicators Set</span>
+          </a>
+        </div>
+
+        <div class="gallery-cta">
+          <a href="#" class="btn btn-ghost">Browse All Resources</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-inner">
+        <h2>MERL Support – Makueni County</h2>
+        <p class="contact-sub">
+          For technical assistance, dashboard access, or project reporting support in Makueni,
+          contact the MERL team using the form below.
         </p>
+
+        <form class="contact-form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="Name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="Email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="role">Designation / Role</label>
+              <input id="role" type="text" name="Designation" required>
+            </div>
+
+            <div class="form-field">
+              <label for="county">County</label>
+              <input id="county" type="text" name="County" value="Makueni" required>
+            </div>
+          </div>
+
+          <div class="form-field full">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-send">Send Message</button>
+        </form>
       </div>
-
-      <!-- FILTER BAR -->
-      <form class="projects-filters" id="projects-filter-form">
-        <div class="filter-group">
-          <label for="filter-year">Year</label>
-          <select id="filter-year" name="year">
-            <option value="">All years</option>
-            <option value="2024">2024/2025</option>
-            <option value="2023">2023/2024</option>
-            <option value="2022">2022/2023</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="filter-county">County</label>
-          <select id="filter-county" name="county">
-            <option value="">All counties</option>
-            <option value="Makueni" selected>Makueni</option>
-            <option value="Vihiga">Vihiga</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="filter-sector">Sector</label>
-          <select id="filter-sector" name="sector">
-            <option value="">All sectors</option>
-            <option value="Water">Water &amp; Sanitation</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Health">Health</option>
-            <option value="Infrastructure">Roads &amp; Infrastructure</option>
-          </select>
-        </div>
-
-        <div class="filter-actions">
-          <button type="submit" class="btn btn-cta filter-btn">Filter</button>
-          <button type="button" class="btn btn-ghost filter-reset" id="filter-reset">
-            Reset
-          </button>
-        </div>
-      </form>
-
-      <!-- PROJECT CARDS -->
-      <div class="projects-grid" id="projects-grid">
-
-        <!-- Example portfolio, you can replace/expand with real data later -->
-
-        <article class="project-card"
-                 data-year="2024"
-                 data-county="Makueni"
-                 data-sector="Water">
-          <h3>Kikuu / Kiangini Community Water Project</h3>
-          <p>
-            Construction and augmentation of a community water supply system to improve
-            household access to safe water under climate stress.
-          </p>
-          <div class="project-meta">
-            <span>FY 2024/25</span>
-            <span>Makueni County</span>
-            <span>Water &amp; Sanitation</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> Kikuu &amp; Kiangini areas</p>
-            <p><strong>Focus:</strong> Domestic water supply, storage and distribution.</p>
-          </div>
-          <a href="project-details.html#kikuu-community-water-project" class="read-more-btn">Read More →</a>
-        </article>
-
-        <article class="project-card"
-                 data-year="2024"
-                 data-county="Makueni"
-                 data-sector="Agriculture">
-          <h3>Smallholder Climate-Smart Irrigation Scheme</h3>
-          <p>
-            Drip irrigation and on-farm water harvesting for smallholder farmers to reduce
-            climate risk, stabilize yields, and support high-value crops.
-          </p>
-          <div class="project-meta">
-            <span>FY 2024/25</span>
-            <span>Makueni County</span>
-            <span>Agriculture</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> Selected wards in Kilome and Mbooni.</p>
-            <p><strong>Focus:</strong> Climate-smart irrigation &amp; improved agronomy.</p>
-          </div>
-          <a href="project-details.html#smallholder-climate-smart-irrigation" class="read-more-btn">Read More →</a>
-        </article>
-
-        <article class="project-card"
-                 data-year="2023"
-                 data-county="Makueni"
-                 data-sector="Infrastructure">
-          <h3>Ward Access Roads &amp; Flood Control Structures</h3>
-          <p>
-            Upgrading critical access roads with drainage and flood-protection structures
-            to keep markets and health facilities reachable during heavy rains.
-          </p>
-          <div class="project-meta">
-            <span>FY 2023/24</span>
-            <span>Makueni County</span>
-            <span>Roads &amp; Infrastructure</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> Multiple wards in Kaiti and Kibwezi.</p>
-            <p><strong>Focus:</strong> Climate-resilient transport corridors.</p>
-          </div>
-          <a href="project-details.html#ward-access-roads-flood-control" class="read-more-btn">Read More →</a>
-        </article>
-
-        <article class="project-card"
-                 data-year="2023"
-                 data-county="Makueni"
-                 data-sector="Health">
-          <h3>Health Centre Upgrade &amp; Solarization</h3>
-          <p>
-            Expansion and solarization of selected health centres to improve service
-            delivery and ensure reliable power during climate-related outages.
-          </p>
-          <div class="project-meta">
-            <span>FY 2023/24</span>
-            <span>Makueni County</span>
-            <span>Health</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> Sub-county hospitals and high-volume dispensaries.</p>
-            <p><strong>Focus:</strong> Infrastructure, energy access, and equipment.</p>
-          </div>
-          <a href="project-details.html#health-centre-upgrade-solarization" class="read-more-btn">Read More →</a>
-        </article>
-
-        <article class="project-card"
-                 data-year="2022"
-                 data-county="Makueni"
-                 data-sector="Water">
-          <h3>Borehole Drilling &amp; Solar Pumping Programme</h3>
-          <p>
-            Drilling, equipping, and solarizing community boreholes to support domestic,
-            livestock and small-scale irrigation water supply.
-          </p>
-          <div class="project-meta">
-            <span>FY 2022/23</span>
-            <span>Makueni County</span>
-            <span>Water &amp; Sanitation</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> ASAL wards with recurrent drought stress.</p>
-            <p><strong>Focus:</strong> Groundwater development &amp; energy efficiency.</p>
-          </div>
-          <a href="project-details.html#borehole-drilling-solar-pumping" class="read-more-btn">Read More →</a>
-        </article>
-
-        <article class="project-card"
-                 data-year="2022"
-                 data-county="Makueni"
-                 data-sector="Infrastructure">
-          <h3>County Disaster Operations &amp; Early Warning Centre</h3>
-          <p>
-            Establishment of a disaster operations centre to coordinate early warning,
-            response, and recovery for climate-related hazards.
-          </p>
-          <div class="project-meta">
-            <span>FY 2022/23</span>
-            <span>Makueni County</span>
-            <span>Roads &amp; Infrastructure</span>
-          </div>
-          <div class="project-details">
-            <p><strong>Location:</strong> County headquarters.</p>
-            <p><strong>Focus:</strong> Early warning systems &amp; coordination capacity.</p>
-          </div>
-          <a href="project-details.html#disaster-operations-early-warning-centre" class="read-more-btn">Read More →</a>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.querySelector('h3').textContent.trim();
-        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
-        window.location.href = `project-details.html?id=${id}`;
-      });
-    });
-  </script>
-
-
-  <!-- RESOURCES & PUBLICATIONS -->
-  <section id="resources" class="gallery-strip">
-    <div class="container">
-      <div class="gallery-head">
-        <h2>Resources &amp; Publications</h2>
-        <p class="dash-sub">
-          Policy briefs, technical guides, reports, and training materials supporting the
-          MERL rollout in Makueni and other counties.
-        </p>
-      </div>
-
-      <div class="gallery-grid">
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
-          <span class="g-caption">MERL Technical Guide</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-3.jpg" alt="Training toolkit cover">
-          <span class="g-caption">Training Toolkit (ToT)</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-4.jpg" alt="County report cover">
-          <span class="g-caption">Makueni Pilot Report</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-5.jpg" alt="User manual cover">
-          <span class="g-caption">Dashboard User Manual</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-6.jpg" alt="Indicators brief cover">
-          <span class="g-caption">Climate Indicators Set</span>
-        </a>
-      </div>
-
-      <div class="gallery-cta">
-        <a href="#" class="btn btn-ghost">Browse All Resources</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-inner">
-
-      <h2>MERL Support – Makueni County</h2>
-      <p class="contact-sub">
-        For technical assistance, dashboard access, or project reporting support in Makueni,
-        contact the MERL team using the form below.
-      </p>
-
-      <form class="contact-form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
-        <div class="form-grid">
-
-          <div class="form-field">
-            <label>Name</label>
-            <input type="text" name="Name" required>
-          </div>
-
-          <div class="form-field">
-            <label>Email</label>
-            <input type="email" name="Email" required>
-          </div>
-
-          <div class="form-field">
-            <label>Designation / Role</label>
-            <input type="text" name="Designation" required>
-          </div>
-
-          <div class="form-field">
-            <label>County</label>
-            <input type="text" name="County" value="Makueni" required>
-          </div>
-
-        </div>
-        <div class="form-field full">
-          <label>Message</label>
-          <textarea name="Message" rows="6" required></textarea>
-        </div>
-
-        <button type="submit" class="btn-send">Send Message</button>
-      </form>
-
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -448,11 +442,34 @@
   <script>
     // Footer year
     const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-    // Projects filter (same logic as index/vihiga)
+    // Make project cards clickable but don't hijack real controls
+    document.querySelectorAll('.project-card').forEach(card => {
+      const link = card.querySelector('.read-more-btn');
+      if (!link) return;
+
+      card.setAttribute('role', 'link');
+      card.tabIndex = 0;
+
+      const go = () => window.location.href = link.getAttribute('href');
+
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('a,button,input,select,textarea,label')) return;
+        go();
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          go();
+        }
+      });
+
+      link.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    // Projects filter
     (function () {
       const form = document.getElementById('projects-filter-form');
       if (!form) return;
@@ -486,7 +503,6 @@
         applyFilters();
       });
 
-      // Initial filter application (with default county pre-selected)
       applyFilters();
     })();
   </script>

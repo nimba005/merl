@@ -3,157 +3,216 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>MERL TOOL</title>
+  <title>MERL Tool</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-inner container">
-      <a class="brand" href="index.html">
-        <img src="static/images/coat-of-arms.png" alt="County Logo" class="brand-logo">
-        <span class="brand-text">MERL TOOL</span>
+
+  <!-- TOP NAV -->
+  <header class="topbar">
+    <div class="wrap navline">
+      <a class="brandmark" href="index.html">
+        <img src="static/images/coat-of-arms.png" alt="MERL logo">
+        <div class="title">
+          <strong>MERL Tool</strong>
+          <span>Monitoring • Evaluation • Reporting • Learning</span>
+        </div>
       </a>
 
-      <!-- Mobile menu toggle (CSS-only) -->
+      <!-- Mobile nav toggle -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
-      <label for="nav-toggle" class="nav-burger" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </label>
+      <label class="burger" for="nav-toggle" aria-hidden="true"><i></i></label>
 
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
+      <nav class="navlinks" aria-label="Primary">
+        <a href="index.html" class="is-active">Home</a>
 
-        <div class="has-dd">
-          <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Counties</a>
-          <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
-          <label for="dd-counties" class="dd-caret" aria-hidden="true"></label>
-
-          <div class="dropdown">
-            <a href="vihiga.html">Vihiga County</a>
-            <a href="makueni.html">Makueni County</a>
+        <div class="menu">
+          <a class="menu-btn" href="javascript:void(0)" aria-haspopup="true">Counties</a>
+          <div class="menu-panel" role="menu" aria-label="Counties menu">
+            <a href="vihiga.html" role="menuitem">Vihiga County</a>
+            <a href="makueni.html" role="menuitem">Makueni County</a>
           </div>
         </div>
 
-        <a href="https://merl.agnes.africa/home" class="btn btn-login">Login</a>
+        <a class="btn btn-quiet" href="#projects">Explore Projects</a>
+        <a class="btn btn-primary" href="https://merl.agnes.africa/home">Login</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner container">
-      <div class="hero-media">
-        <img src="static/images/hero-excavator.jpg" alt="Project in progress">
-      </div>
+    <div class="wrap hero-grid">
 
-      <div class="hero-copy">
-        <h1 class="hero-rotator" aria-label="Government of Kenya – Monitoring and Evaluation – Tool">
-          <span class="slide">Government of Kenya</span>
-          <span class="slide">Monitoring, Evaluation, Reporting, and Learning</span>
+      <!-- LEFT -->
+      <div class="hero-card hero-message">
+        <div class="badge"><span class="dot"></span> Public Delivery Tracking</div>
+
+        <h1>
+          Evidence-led insights for <span>county climate investments</span>
         </h1>
 
-        <div class="divider"></div>
-
-        <p class="lead">
-          This Monitoring, Evaluation, Reporting and Learning (MERL) tool is a structured digital system designed to track the progress, effectiveness, and impact of projects, programs, or organizational strategies across counties. It provides a systematic approach to collecting, managing, analyzing, and reporting data, enabling evidence-based decision-making and accountability.
+        <p>
+          MERL is a structured digital system for tracking project progress, effectiveness, and learning.
+          It supports transparent reporting, better coordination, and data-driven decision-making across counties.
         </p>
 
-        <div class="quick-stats">
-          <div class="qs-header">Quick Stats</div>
-          <div class="cards">
-            <article class="stat-card">
-              <h3>All Projects</h3>
-              <div class="stat-number">20</div>
-              <!--<div class="stat-sub">Budget Ksh 8,932,874,713</div>-->
-            </article>
-            <article class="stat-card">
-              <h3>Ongoing Projects</h3>
-              <div class="stat-number">19</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-            <article class="stat-card">
-              <h3>Not started Projects</h3>
-              <div class="stat-number warn">0</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-            <article class="stat-card">
-              <h3>Stalled Projects</h3>
-              <div class="stat-number warn">0</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
-            <article class="stat-card">
-              <h3>Completed Projects</h3>
-              <div class="stat-number warn">1</div>
-              <div class="stat-sub">&nbsp;</div>
-            </article>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="auth.html?next=vihiga.html&county=Vihiga">Open Dashboard</a>
+          <a class="btn btn-quiet" href="#resources">Resources</a>
+          <a class="btn btn-quiet" href="#contact">Support</a>
+        </div>
+
+        <!-- QUICK STATS (still static in this HTML; wire to backend later) -->
+        <div class="hero-card stats" style="margin-top:16px;">
+          <div class="stats-head">
+            <div>
+              <h2>Quick Stats</h2>
+              <p class="hint">Snapshot overview (sample values)</p>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="kpi">
+              <p class="label">All Projects</p>
+              <p class="value neutral">20</p>
+            </div>
+
+            <div class="kpi">
+              <p class="label">Ongoing</p>
+              <p class="value good">19</p>
+            </div>
+
+            <div class="kpi">
+              <p class="label">Not Started</p>
+              <p class="value warn">0</p>
+            </div>
+
+            <div class="kpi">
+              <p class="label">Completed</p>
+              <p class="value warn">1</p>
+            </div>
           </div>
         </div>
+
       </div>
+
+      <!-- RIGHT -->
+      <div class="hero-media">
+        <div class="media-frame">
+          <img src="static/images/hero-excavator.jpg" alt="County project site">
+        </div>
+
+        <div class="hero-card stats">
+          <div class="stats-head">
+            <div>
+              <h2>What you can do here</h2>
+              <p class="hint">A clean public entry point to the MERL system</p>
+            </div>
+          </div>
+          <div class="stats-grid">
+            <div class="kpi">
+              <p class="label">View county dashboards</p>
+              <p class="value neutral">Vihiga / Makueni</p>
+            </div>
+            <div class="kpi">
+              <p class="label">Track investments</p>
+              <p class="value neutral">By sector & year</p>
+            </div>
+            <div class="kpi">
+              <p class="label">Access resources</p>
+              <p class="value neutral">Guides & toolkits</p>
+            </div>
+            <div class="kpi">
+              <p class="label">Request support</p>
+              <p class="value neutral">Helpdesk form</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
-  <!-- DASHBOARD PREVIEW -->
-  <section id="dashboard" class="dash-preview">
-    <div class="container">
-      <div class="dash-head">
-        <h2>Public Service Delivery Analytics</h2>
-        <p class="dash-sub">
-          Near–real-time insights on project performance, budget utilization, sector investments, and service delivery outcomes across the county.
-        </p>
-        <a href="auth.html?next=vihiga.html&county=Vihiga" class="btn btn-cta">Open Dashboard</a>
+  <!-- DASHBOARD PREVIEW (LIGHT SECTION) -->
+  <section class="section section-light" id="dashboard">
+    <div class="wrap">
+
+      <div class="section-title">
+        <div>
+          <h2>Public Service Delivery Analytics</h2>
+          <p>Near–real-time insights on project performance, sector investments, and service delivery outcomes.</p>
+        </div>
       </div>
 
-      <div class="dash-grid">
-        <article class="dash-card">
-          <div class="dash-card-head">
-            <h3>Budget Utilization</h3>
-            <span class="pill">FY 2024/25</span>
+      <div class="panel">
+        <div class="panel-card">
+          <div class="panel-head">
+            <span class="chip">Dashboard Preview</span>
           </div>
-          <div class="dash-main">
-            <div class="big-number">Coming soon</div>
-            <div class="muted">of allocated budget absorbed</div>
+          <div class="panel-body">
+            <h3>County dashboards built for clarity</h3>
+            <p class="sub">
+              Explore project pipelines, sector distribution, and reporting status. Designed for decision-makers,
+              technical teams, and public accountability.
+            </p>
           </div>
-          <div class="dash-foot">Updated 1 month ago</div>
-        </article>
+          <div class="panel-actions">
+            <a class="btn btn-light" href="auth.html?next=vihiga.html&county=Vihiga">Open Vihiga Dashboard</a>
+            <a class="btn btn-outline" href="auth.html?next=makueni.html&county=Makueni">Open Makueni Dashboard</a>
+          </div>
+        </div>
 
-        <article class="dash-card">
-          <div class="dash-card-head">
-            <h3>Top Sectors</h3>
-            <span class="pill">As per the NCCAP</span>
+        <div class="mini-grid">
+          <div class="mini">
+            <h4>Budget Utilization</h4>
+            <div class="big">Coming soon</div>
+            <div class="meta">FY 2024/25</div>
           </div>
-          <ul class="list">
-            <li>Roads & Infrastructure</li>
-            <li>Water & Sanitation</li>
-            <li>Health Facilities</li>
-            <li>Agriculture</li>
-          </ul>
-          <div class="dash-foot"><a href="#">View sector maps →</a></div>
-        </article>
+          <div class="mini">
+            <h4>Top Sectors</h4>
+            <div class="big">4</div>
+            <div class="meta">NCCAP-aligned</div>
+          </div>
+          <div class="mini">
+            <h4>Reporting</h4>
+            <div class="big">In progress</div>
+            <div class="meta">Quarterly cadence</div>
+          </div>
+          <div class="mini">
+            <h4>Maps & Layers</h4>
+            <div class="big">Planned</div>
+            <div class="meta">Spatial insights</div>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
 
   <!-- PROJECTS EXPLORER -->
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <div class="projects-head">
-        <h2>Climate Investment Projects</h2>
-        <p class="dash-sub">
-          Browse county projects and quickly filter by year, county, and sector to see where
-          climate investments are happening.
-        </p>
+  <section class="section section-light" id="projects">
+    <div class="wrap">
+
+      <div class="section-title">
+        <div>
+          <h2>Climate Investment Projects</h2>
+          <p>Browse and filter projects by year, county, and sector.</p>
+        </div>
       </div>
 
-      <!-- FILTER BAR -->
-      <form class="projects-filters" id="projects-filter-form">
-        <div class="filter-group">
-          <label for="filter-year">Year</label>
-          <select id="filter-year" name="year">
+      <!-- FILTERS -->
+      <form class="filters" id="merl-filter-form">
+        <div class="field">
+          <label for="f-year">Year</label>
+          <select id="f-year" name="year">
             <option value="">All years</option>
             <option value="2024">2024/2025</option>
             <option value="2023">2023/2024</option>
@@ -161,20 +220,18 @@
           </select>
         </div>
 
-        <div class="filter-group">
-          <label for="filter-county">County</label>
-          <select id="filter-county" name="county">
+        <div class="field">
+          <label for="f-county">County</label>
+          <select id="f-county" name="county">
             <option value="">All counties</option>
             <option value="Makueni">Makueni</option>
             <option value="Vihiga">Vihiga</option>
-            <!--<option value="Kitui">Kitui</option>
-            <option value="Kajiado">Kajiado</option>-->
           </select>
         </div>
 
-        <div class="filter-group">
-          <label for="filter-sector">Sector</label>
-          <select id="filter-sector" name="sector">
+        <div class="field">
+          <label for="f-sector">Sector</label>
+          <select id="f-sector" name="sector">
             <option value="">All sectors</option>
             <option value="Water">Water &amp; Sanitation</option>
             <option value="Agriculture">Agriculture</option>
@@ -184,16 +241,14 @@
         </div>
 
         <div class="filter-actions">
-          <button type="submit" class="btn btn-cta filter-btn">Filter</button>
-          <button type="button" class="btn btn-ghost filter-reset" id="filter-reset">
-            Reset
-          </button>
+          <button type="submit" class="btn btn-light">Filter</button>
+          <button type="button" class="btn btn-outline" id="merl-reset">Reset</button>
         </div>
       </form>
 
       <!-- PROJECT CARDS -->
-      <div class="projects-grid" id="projects-grid">
-        <article class="project-card"
+      <div class="cards-grid" id="merl-projects">
+        <article class="card"
                  data-year="2024"
                  data-county="Makueni"
                  data-sector="Water">
@@ -202,15 +257,15 @@
             Construction and augmentation of a community water supply system to improve
             household access to safe water under climate stress.
           </p>
-          <div class="project-meta">
-            <span>FY 2024/25</span>
-            <span>Makueni County</span>
-            <span>Water &amp; Sanitation</span>
+          <div class="meta">
+            <span class="tag">FY 2024/25</span>
+            <span class="tag">Makueni</span>
+            <span class="tag">Water &amp; Sanitation</span>
           </div>
-          <a href="project-details.html#kikuu-water-project" class="read-more-btn">Read More →</a>
+          <a class="more" href="project-details.html#kikuu-water-project">Read more →</a>
         </article>
 
-        <article class="project-card"
+        <article class="card"
                  data-year="2024"
                  data-county="Vihiga"
                  data-sector="Water">
@@ -219,15 +274,15 @@
             Rehabilitation and expansion of water infrastructure to support climate-resilient
             livelihoods in Kaila community.
           </p>
-          <div class="project-meta">
-            <span>FY 2024/25</span>
-            <span>Vihiga County</span>
-            <span>Water &amp; Sanitation</span>
+          <div class="meta">
+            <span class="tag">FY 2024/25</span>
+            <span class="tag">Vihiga</span>
+            <span class="tag">Water &amp; Sanitation</span>
           </div>
-          <a href="project-details.html#kaila-water-project" class="read-more-btn">Read More →</a>
+          <a class="more" href="project-details.html#kaila-water-project">Read more →</a>
         </article>
 
-        <article class="project-card"
+        <article class="card"
                  data-year="2023"
                  data-county="Makueni"
                  data-sector="Agriculture">
@@ -236,15 +291,15 @@
             Drip irrigation and on-farm water harvesting for smallholder farmers to
             reduce climate risk and improve yields.
           </p>
-          <div class="project-meta">
-            <span>FY 2023/24</span>
-            <span>Makueni County</span>
-            <span>Agriculture</span>
+          <div class="meta">
+            <span class="tag">FY 2023/24</span>
+            <span class="tag">Makueni</span>
+            <span class="tag">Agriculture</span>
           </div>
-          <a href="project-details.html#climate-smart-irrigation" class="read-more-btn">Read More →</a>
+          <a class="more" href="project-details.html#climate-smart-irrigation">Read more →</a>
         </article>
 
-        <article class="project-card"
+        <article class="card"
                  data-year="2022"
                  data-county="Kitui"
                  data-sector="Infrastructure">
@@ -253,30 +308,131 @@
             Upgrading critical access roads with drainage and flood-protection structures
             to keep markets connected during extreme weather.
           </p>
-          <div class="project-meta">
-            <span>FY 2022/23</span>
-            <span>Kitui County</span>
-            <span>Roads &amp; Infrastructure</span>
+          <div class="meta">
+            <span class="tag">FY 2022/23</span>
+            <span class="tag">Kitui</span>
+            <span class="tag">Infrastructure</span>
           </div>
-          <a href="project-details.html#rural-access-roads" class="read-more-btn">Read More →</a>
+          <a class="more" href="project-details.html#rural-access-roads">Read more →</a>
         </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="section section-light" id="resources">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>Resources &amp; Publications</h2>
+          <p>Policy briefs, technical guides, reports, and training materials from the MERL initiative.</p>
+        </div>
+      </div>
+
+      <div class="resources-grid">
+        <a href="#" class="tile">
+          <img src="static/images/gallery-2.jpg" alt="MERL Technical Guide cover">
+          <span>MERL Technical Guide</span>
+        </a>
+        <a href="#" class="tile">
+          <img src="static/images/gallery-3.jpg" alt="Training Toolkit cover">
+          <span>Training Toolkit (ToT)</span>
+        </a>
+        <a href="#" class="tile">
+          <img src="static/images/gallery-4.jpg" alt="Pilot Validation Report cover">
+          <span>Pilot Validation Report</span>
+        </a>
+        <a href="#" class="tile">
+          <img src="static/images/gallery-5.jpg" alt="Dashboard User Manual cover">
+          <span>Dashboard User Manual</span>
+        </a>
+        <a href="#" class="tile">
+          <img src="static/images/gallery-6.jpg" alt="Climate Indicators Set cover">
+          <span>Climate Indicators Set</span>
+        </a>
+      </div>
+
+      <div style="margin-top:14px;">
+        <a class="btn btn-outline" href="#">Browse All Resources</a>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section-title">
+        <div>
+          <h2>MERL Support</h2>
+          <p>For technical assistance, dashboard access, or general MERL support, reach us using the form below.</p>
+        </div>
+      </div>
+
+      <div class="contact-shell">
+        <form class="form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
+          <div class="field">
+            <label for="c-name">Name</label>
+            <input id="c-name" type="text" name="Name" required>
+          </div>
+
+          <div class="field">
+            <label for="c-email">Email</label>
+            <input id="c-email" type="email" name="Email" required>
+          </div>
+
+          <div class="field">
+            <label for="c-role">Designation / Role</label>
+            <input id="c-role" type="text" name="Designation" required>
+          </div>
+
+          <div class="field">
+            <label for="c-county">County</label>
+            <input id="c-county" type="text" name="County" required>
+          </div>
+
+          <div class="full">
+            <label for="c-msg">Message</label>
+            <textarea id="c-msg" name="Message" required></textarea>
+          </div>
+
+          <div class="send-row full">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <a class="btn btn-quiet" href="https://merl.agnes.africa/home">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footline">
+          <div>© <span id="year"></span> MERL Tool</div>
+          <div>
+            <a href="#">Privacy</a><span class="sep">•</span>
+            <a href="#">Terms</a><span class="sep">•</span>
+            <a href="#contact">Support</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+
   <script>
-    document.querySelectorAll('.project-card').forEach(card => {
-      const link = card.querySelector('.read-more-btn');
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Make whole project cards clickable (same behavior, new class names)
+    document.querySelectorAll('.card').forEach(card => {
+      const link = card.querySelector('a.more');
       if (!link) return;
 
-      // Make entire card clickable + keyboard accessible
       card.setAttribute('role', 'link');
       card.tabIndex = 0;
 
       const go = () => window.location.href = link.getAttribute('href');
 
       card.addEventListener('click', (e) => {
-        // Don't hijack clicks on actual interactive elements
         if (e.target.closest('a,button,input,select,textarea,label')) return;
         go();
       });
@@ -288,175 +444,33 @@
         }
       });
 
-      // Stop bubbling when user clicks the link itself
       link.addEventListener('click', (e) => e.stopPropagation());
     });
-  </script>
 
-
-
-
-  <!-- RESOURCES & PUBLICATIONS -->
-  <section id="resources" class="gallery-strip">
-    <div class="container">
-      <div class="gallery-head">
-        <h2>Resources &amp; Publications</h2>
-        <p class="dash-sub">Policy briefs, technical guides, reports, and training materials from the MERL initiative.</p>
-      </div>
-
-      <div class="gallery-grid">
-        <!--<a href="#" class="g-item">
-          <img src="static/images/AGNES.png" alt="Concept Note cover">
-          <span class="g-caption">Concept Note (2025–2026)</span>
-        </a>-->
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-2.jpg" alt="Technical guide cover">
-          <span class="g-caption">MERL Technical Guide</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-3.jpg" alt="Training toolkit cover">
-          <span class="g-caption">Training Toolkit (ToT)</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-4.jpg" alt="Validation report cover">
-          <span class="g-caption">Pilot Validation Report</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-5.jpg" alt="User manual cover">
-          <span class="g-caption">Dashboard User Manual</span>
-        </a>
-        <a href="#" class="g-item">
-          <img src="static/images/gallery-6.jpg" alt="Indicators brief cover">
-          <span class="g-caption">Climate Indicators Set</span>
-        </a>
-      </div>
-
-      <div class="gallery-cta">
-        <a href="#" class="btn btn-ghost">Browse All Resources</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-inner">
-
-      <h2>MERL Support</h2>
-      <p class="contact-sub">
-        For technical assistance, dashboard access, or general MERL support, contact us using the channels below.
-      </p>
-
-      <!-- CONTACT CARDS (ONLY EMAIL + PHONE)
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3>Email</h3>
-          <p>
-            <a href="mailto:e.nimba@agnesafrica.org" class="contact-link">
-              e.nimba@agnesafrica.org
-            </a>
-          </p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Phone</h3>
-          <p>
-            <a href="tel:+254700000000" class="contact-link">
-              +254 700 000 000
-            </a>
-          </p>
-        </div>
-      </div>-->
-      <!-- MESSAGE FORM -->
-      <form class="contact-form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
-
-        <div class="form-grid">
-
-          <div class="form-field">
-            <label>Name</label>
-            <input type="text" name="Name" required>
-          </div>
-
-          <div class="form-field">
-            <label>Email</label>
-            <input type="email" name="Email" required>
-          </div>
-
-          <div class="form-field">
-            <label>Designation / Role</label>
-            <input type="text" name="Designation" required>
-          </div>
-
-          <div class="form-field">
-            <label>County</label>
-            <input type="text" name="County" required>
-          </div>
-
-        </div>
-        <div class="form-field full">
-          <label>Message</label>
-          <textarea name="Message" rows="6" required></textarea>
-        </div>
-
-        <button type="submit" class="btn-send">Send Message</button>
-
-      </form>
-
-    </div>
-  </section>
-
-  <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Projects filter
+    // Project filters
     (function () {
-      const form = document.getElementById('projects-filter-form');
-      if (!form) return; // safety if section is removed
+      const form = document.getElementById('merl-filter-form');
+      const resetBtn = document.getElementById('merl-reset');
+      const cards = Array.from(document.querySelectorAll('#merl-projects .card'));
 
-      const resetBtn = document.getElementById('filter-reset');
-      const cards = Array.from(document.querySelectorAll('.project-card'));
-
-      function applyFilters() {
+      function apply() {
         const year = form.year.value;
         const county = form.county.value;
         const sector = form.sector.value;
 
         cards.forEach(card => {
-          const matchYear   = !year   || card.dataset.year   === year;
-          const matchCounty = !county || card.dataset.county === county;
-          const matchSector = !sector || card.dataset.sector === sector;
-
-          card.style.display = (matchYear && matchCounty && matchSector) ? '' : 'none';
+          const okYear = !year || card.dataset.year === year;
+          const okCounty = !county || card.dataset.county === county;
+          const okSector = !sector || card.dataset.sector === sector;
+          card.style.display = (okYear && okCounty && okSector) ? '' : 'none';
         });
       }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        applyFilters();
-      });
-
-      // Live filtering on change (optional but nice)
-      form.addEventListener('change', applyFilters);
-
-      resetBtn.addEventListener('click', function () {
-        form.reset();
-        applyFilters();
-      });
+      form.addEventListener('submit', (e) => { e.preventDefault(); apply(); });
+      form.addEventListener('change', apply);
+      resetBtn.addEventListener('click', () => { form.reset(); apply(); });
     })();
   </script>
 
-
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Government of Kenya. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy</a><span>·</span><a href="#">Terms</a><span>·</span><a href="#">Support</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

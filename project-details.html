@@ -4,44 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Project Details | MERL TOOL</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Minimal styling so it looks good even before you tweak styles.css */
-    .details-wrap { padding: 32px 0 56px; }
-    .details-top { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom: 18px; }
-    .back-link { text-decoration:none; font-weight:600; }
-    .project-pane, .default-pane { display:none; }
-    .project-pane:target { display:block; }
-    .default-pane { display:block; }
-    .project-pane:target ~ .default-pane { display:none; }
-
-    .detail-card { background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:16px; padding:18px; box-shadow: 0 8px 24px rgba(0,0,0,.06); }
-    .detail-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:16px; }
-    @media (max-width: 900px){ .detail-grid { grid-template-columns: 1fr; } }
-
-    .meta-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top: 14px; }
-    @media (max-width: 520px){ .meta-grid { grid-template-columns: 1fr; } }
-    .meta-item { background: rgba(0,0,0,.03); border:1px solid rgba(0,0,0,.06); border-radius:14px; padding:12px; }
-    .meta-k { font-size: 12px; opacity:.75; margin-bottom: 2px; }
-    .meta-v { font-weight: 700; }
-
-    .muted { opacity:.75; }
-    .pillx { display:inline-flex; align-items:center; padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.05); border:1px solid rgba(0,0,0,.08); font-weight:600; font-size:12px; }
-    ul.clean { margin: 10px 0 0; padding-left: 18px; }
-    .hr { height:1px; background: rgba(0,0,0,.08); margin: 16px 0; }
-
-    .project-list { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; margin-top: 14px; }
-    @media (max-width: 720px){ .project-list { grid-template-columns: 1fr; } }
-    .project-link { display:block; padding:14px; border-radius:16px; border:1px solid rgba(0,0,0,.08); background:#fff; text-decoration:none; box-shadow: 0 8px 24px rgba(0,0,0,.04); }
-    .project-link b { display:block; margin-bottom: 4px; }
-  </style>
 </head>
-<body>
 
-  <!-- NAVBAR (same as index) -->
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAVBAR (same as new pages) -->
   <header class="navbar">
     <div class="nav-inner container">
       <a class="brand" href="index.html">
@@ -54,8 +28,9 @@
         <span></span><span></span><span></span>
       </label>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="index.html">Home</a>
+
         <div class="has-dd">
           <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Counties</a>
           <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
@@ -66,29 +41,51 @@
             <a href="makueni.html">Makueni County</a>
           </div>
         </div>
+
         <a href="https://merl.agnes.africa/home" class="btn btn-login">Login</a>
       </nav>
     </div>
   </header>
 
-  <main class="container details-wrap">
+  <main id="main" class="container details-page">
+
+    <!-- PAGE HEAD -->
+    <section class="details-head">
+      <div class="details-head-inner">
+        <div>
+          <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span class="sep">·</span>
+            <span>Projects</span>
+            <span class="sep">·</span>
+            <span>Details</span>
+          </div>
+          <h1 class="details-title">Project Details</h1>
+          <p class="details-sub">
+            Open a project from the homepage, or select one from the list below.
+          </p>
+        </div>
+
+        <a class="btn btn-quiet details-back" href="index.html#projects">← Back to Projects</a>
+      </div>
+    </section>
 
     <!-- PROJECT 1 -->
     <section id="kikuu-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Kikuu / Kiangini Community Water Project</h1>
-          <p class="muted">Objective: The initiative supports Climate Smart water supply...</p>
+          <h2>Kikuu / Kiangini Community Water Project</h2>
+          <p class="detail-lead">Objective: The initiative supports Climate Smart water supply...</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Solarization of the scheme</li>
             <li>Installation of pumping submersible pump</li>
             <li>Construction of 100m3 storage tanks</li>
@@ -116,18 +113,18 @@
     <section id="kaila-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Kaila Climate-Resilient Water Project</h1>
-          <p class="muted">Objective: To provide climate resilient water supply...</p>
+          <h2>Kaila Climate-Resilient Water Project</h2>
+          <p class="detail-lead">Objective: To provide climate resilient water supply...</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Pump installation</li>
             <li>Installation of water kiosk</li>
             <li>Solarization of pumping system</li>
@@ -156,18 +153,18 @@
     <section id="ebukhaya-community-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Augmentation of Ebukhaya Community Water Project</h1>
-          <p class="muted">Objective: The initiative supports Climate Smart water supply, enhancing resilience in Central and North East Bunyore wards.</p>
+          <h2>Augmentation of Ebukhaya Community Water Project</h2>
+          <p class="detail-lead">Objective: The initiative supports Climate Smart water supply, enhancing resilience in Central and North East Bunyore wards.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Solarization of the scheme</li>
             <li>Installation of submersible pump</li>
             <li>Construction of 100m3 storage tanks</li>
@@ -195,18 +192,18 @@
     <section id="ekamanji-community-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Ekamanji Community Climate Resilient Water Project</h1>
-          <p class="muted">Objective: To provide a reliable and climate resilient water supply to communities in Luanda Township ward and adjacent areas.</p>
+          <h2>Ekamanji Community Climate Resilient Water Project</h2>
+          <p class="detail-lead">Objective: To provide a reliable and climate resilient water supply to communities in Luanda Township ward and adjacent areas.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Construction of water supply infrastructure (pipelines, storage tanks)</li>
             <li>Commissioning and handover of the scheme</li>
             <li>Community engagement and household connections</li>
@@ -235,18 +232,18 @@
     <section id="maragoli-hills-forest-rehabilitation" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Rehabilitation of 70 Acres of Maragoli Hills Forest</h1>
-          <p class="muted">Objective: To restore and rehabilitate Maragoli Hills by fencing degraded catchment areas and re-establishing forest cover.</p>
+          <h2>Rehabilitation of 70 Acres of Maragoli Hills Forest</h2>
+          <p class="detail-lead">Objective: To restore and rehabilitate Maragoli Hills by fencing degraded catchment areas and re-establishing forest cover.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Stakeholder engagement meetings</li>
             <li>Fencing degraded catchment area</li>
             <li>Purchase of indigenous seedlings &amp; bamboo</li>
@@ -275,18 +272,18 @@
     <section id="mutave-jepsesi-bridge" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Construction of Mutave–Jepsesi Bridge</h1>
-          <p class="muted">Objective: To improve connectivity and resilience by constructing a durable bridge linking Mutave and Jepsesi localities.</p>
+          <h2>Construction of Mutave–Jepsesi Bridge</h2>
+          <p class="detail-lead">Objective: To improve connectivity and resilience by constructing a durable bridge linking Mutave and Jepsesi localities.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Construction of foundations and abutments</li>
             <li>Construction of bridge superstructure and decking</li>
             <li>Approach works and drainage infrastructure</li>
@@ -313,18 +310,18 @@
     <section id="vigina-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Equipping, Expansion and Solarization of Vigina Water Project</h1>
-          <p class="muted">Objective: To improve and expand water supply services in Lyaduywa/Idzava Ward.</p>
+          <h2>Equipping, Expansion and Solarization of Vigina Water Project</h2>
+          <p class="detail-lead">Objective: To improve and expand water supply services in Lyaduywa/Idzava Ward.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Construction of 50m3 water sump</li>
             <li>Solarizing intake pump system</li>
             <li>Installing submersible pump</li>
@@ -354,18 +351,18 @@
     <section id="nadiradi-community-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Augmentation of Nadiradi Community Water Project</h1>
-          <p class="muted">Objective: To expand and strengthen the Nadiradi water supply infrastructure for sustained access to safe water.</p>
+          <h2>Augmentation of Nadiradi Community Water Project</h2>
+          <p class="detail-lead">Objective: To expand and strengthen the Nadiradi water supply infrastructure for sustained access to safe water.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <ul class="clean">
+          <ul class="clean-list">
             <li>Installation of 100,000-litre elevated steel tank on 12m tower</li>
             <li>Laying 18km distribution pipelines</li>
             <li>Connection to existing borehole system</li>
@@ -392,18 +389,18 @@
     <section id="kaptik-mwala-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Construction of Kaptik–Mwala Community Climate Resilient Water Project</h1>
-          <p class="muted">Objective: To expand and strengthen water supply infrastructure in Kaptik-Mwala area.</p>
+          <h2>Construction of Kaptik–Mwala Community Climate Resilient Water Project</h2>
+          <p class="detail-lead">Objective: To expand and strengthen water supply infrastructure in Kaptik-Mwala area.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <p class="muted">Activities not yet listed.</p>
+          <p class="detail-lead">Activities not yet listed.</p>
         </article>
 
         <aside class="detail-card">
@@ -426,18 +423,18 @@
     <section id="kegondi-community-water-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Construction of Kegondi Community Climate Resilient Water Project</h1>
-          <p class="muted">Objective: To provide a reliable, climate resilient water supply system to the Kegondi community.</p>
+          <h2>Construction of Kegondi Community Climate Resilient Water Project</h2>
+          <p class="detail-lead">Objective: To provide a reliable, climate resilient water supply system to the Kegondi community.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <p class="muted">Activities not yet listed.</p>
+          <p class="detail-lead">Activities not yet listed.</p>
         </article>
 
         <aside class="detail-card">
@@ -460,18 +457,18 @@
     <section id="south-maragoli-apiculture-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Completion &amp; Commercialization of South Maragoli Apiculture Project</h1>
-          <p class="muted">Objective: (Not provided)</p>
+          <h2>Completion &amp; Commercialization of South Maragoli Apiculture Project</h2>
+          <p class="detail-lead">Objective: (Not provided)</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <p class="muted">Activities not yet listed.</p>
+          <p class="detail-lead">Activities not yet listed.</p>
         </article>
 
         <aside class="detail-card">
@@ -494,18 +491,18 @@
     <section id="buhani-irrigation-project" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Snapshot</span>
       </div>
 
       <div class="detail-grid">
         <article class="detail-card">
-          <h1>Completion and Commercialization of Buhani Irrigation Project</h1>
-          <p class="muted">Objective: To enable farmers to shift from subsistence to commercially viable irrigated agriculture.</p>
+          <h2>Completion and Commercialization of Buhani Irrigation Project</h2>
+          <p class="detail-lead">Objective: To enable farmers to shift from subsistence to commercially viable irrigated agriculture.</p>
 
-          <div class="hr"></div>
+          <div class="detail-divider"></div>
 
           <h3>Key Activities</h3>
-          <p class="muted">Activities not yet listed.</p>
+          <p class="detail-lead">Activities not yet listed.</p>
         </article>
 
         <aside class="detail-card">
@@ -524,58 +521,64 @@
       </div>
     </section>
 
-    <!-- OPTIONAL PLACEHOLDERS for cards you currently show on index.html but are not in your JSON -->
+    <!-- OPTIONAL PLACEHOLDERS -->
     <section id="climate-smart-irrigation" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Details</span>
       </div>
+
       <article class="detail-card">
-        <h1>Climate-Smart Irrigation for Smallholders</h1>
-        <p class="muted">This project is listed on the homepage but details are not yet populated in the dataset.</p>
+        <h2>Climate-Smart Irrigation for Smallholders</h2>
+        <p class="detail-lead">This project is listed on the homepage but details are not yet populated in the dataset.</p>
       </article>
     </section>
 
     <section id="rural-access-roads" class="project-pane">
       <div class="details-top">
         <a class="back-link" href="index.html#projects">← Back to Projects</a>
-        <span class="pillx">Project Details</span>
+        <span class="details-pill">Project Details</span>
       </div>
+
       <article class="detail-card">
-        <h1>Rural Access Roads &amp; Flood Control</h1>
-        <p class="muted">This project is listed on the homepage but details are not yet populated in the dataset.</p>
+        <h2>Rural Access Roads &amp; Flood Control</h2>
+        <p class="detail-lead">This project is listed on the homepage but details are not yet populated in the dataset.</p>
       </article>
     </section>
 
-    <!-- DEFAULT VIEW (shows when no #hash is provided) -->
+    <!-- DEFAULT VIEW -->
     <section class="default-pane detail-card">
-      <h1>Select a Project</h1>
-      <p class="muted">Open a project from the homepage, or pick one below.</p>
+      <h2>Select a Project</h2>
+      <p class="detail-lead">Choose a project below or open one from the homepage.</p>
 
       <div class="project-list">
-        <a class="project-link" href="#kikuu-water-project"><b>Kikuu / Kiangini Community Water Project</b><span class="muted">Water supply (FLLoCA)</span></a>
-        <a class="project-link" href="#kaila-water-project"><b>Kaila Climate-Resilient Water Project</b><span class="muted">Water infrastructure (FLLoCA)</span></a>
-        <a class="project-link" href="#ebukhaya-community-water-project"><b>Ebukhaya Community Water Project</b><span class="muted">Augmentation (FLLoCA)</span></a>
-        <a class="project-link" href="#ekamanji-community-water-project"><b>Ekamanji Community Water Project</b><span class="muted">Water supply (FLLoCA)</span></a>
-        <a class="project-link" href="#maragoli-hills-forest-rehabilitation"><b>Maragoli Hills Forest Rehabilitation</b><span class="muted">Ecosystem restoration (FLLoCA)</span></a>
-        <a class="project-link" href="#mutave-jepsesi-bridge"><b>Mutave–Jepsesi Bridge</b><span class="muted">Infrastructure resilience (FLLoCA)</span></a>
-        <a class="project-link" href="#vigina-water-project"><b>Vigina Water Project</b><span class="muted">Expansion &amp; solarization (FLLoCA)</span></a>
-        <a class="project-link" href="#nadiradi-community-water-project"><b>Nadiradi Community Water Project</b><span class="muted">Augmentation (FLLoCA)</span></a>
-        <a class="project-link" href="#kaptik-mwala-water-project"><b>Kaptik–Mwala Water Project</b><span class="muted">Construction (FLLoCA)</span></a>
-        <a class="project-link" href="#kegondi-community-water-project"><b>Kegondi Water Project</b><span class="muted">Construction (FLLoCA)</span></a>
-        <a class="project-link" href="#south-maragoli-apiculture-project"><b>South Maragoli Apiculture Project</b><span class="muted">Commercialization (FLLoCA)</span></a>
-        <a class="project-link" href="#buhani-irrigation-project"><b>Buhani Irrigation Project</b><span class="muted">Irrigation commercialization (FLLoCA)</span></a>
+        <a class="project-link" href="#kikuu-water-project"><b>Kikuu / Kiangini Community Water Project</b><span class="link-sub">Water supply (FLLoCA)</span></a>
+        <a class="project-link" href="#kaila-water-project"><b>Kaila Climate-Resilient Water Project</b><span class="link-sub">Water infrastructure (FLLoCA)</span></a>
+        <a class="project-link" href="#ebukhaya-community-water-project"><b>Ebukhaya Community Water Project</b><span class="link-sub">Augmentation (FLLoCA)</span></a>
+        <a class="project-link" href="#ekamanji-community-water-project"><b>Ekamanji Community Water Project</b><span class="link-sub">Water supply (FLLoCA)</span></a>
+        <a class="project-link" href="#maragoli-hills-forest-rehabilitation"><b>Maragoli Hills Forest Rehabilitation</b><span class="link-sub">Ecosystem restoration (FLLoCA)</span></a>
+        <a class="project-link" href="#mutave-jepsesi-bridge"><b>Mutave–Jepsesi Bridge</b><span class="link-sub">Infrastructure resilience (FLLoCA)</span></a>
+        <a class="project-link" href="#vigina-water-project"><b>Vigina Water Project</b><span class="link-sub">Expansion &amp; solarization (FLLoCA)</span></a>
+        <a class="project-link" href="#nadiradi-community-water-project"><b>Nadiradi Community Water Project</b><span class="link-sub">Augmentation (FLLoCA)</span></a>
+        <a class="project-link" href="#kaptik-mwala-water-project"><b>Kaptik–Mwala Water Project</b><span class="link-sub">Construction (FLLoCA)</span></a>
+        <a class="project-link" href="#kegondi-community-water-project"><b>Kegondi Water Project</b><span class="link-sub">Construction (FLLoCA)</span></a>
+        <a class="project-link" href="#south-maragoli-apiculture-project"><b>South Maragoli Apiculture Project</b><span class="link-sub">Commercialization (FLLoCA)</span></a>
+        <a class="project-link" href="#buhani-irrigation-project"><b>Buhani Irrigation Project</b><span class="link-sub">Irrigation commercialization (FLLoCA)</span></a>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (uses your existing .footer styles) -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Government of Kenya. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy</a><span>·</span><a href="#">Terms</a><span>·</span><a href="#">Support</a>
+    <div class="container">
+      <div class="footline">
+        <div>© <span id="year"></span> Government of Kenya. All rights reserved.</div>
+        <div>
+          <a href="#">Privacy</a><span class="sep">·</span>
+          <a href="#">Terms</a><span class="sep">·</span>
+          <a href="#">Support</a>
+        </div>
       </div>
     </div>
   </footer>
