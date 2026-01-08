@@ -1,6 +1,10 @@
 /* =========================================================
-   MERL UI v2 — Independent Theme (Yellow Accent)
+   MERL UI v2 — Climate Light Theme (Yellow Accent)
    File: styles.css
+   Notes:
+   - Keeps ALL your existing classes/structures.
+   - Fixes ALL “dark-theme leftover” text colors so nothing disappears.
+   - Unifies main site + county pages + details page on the same light theme.
 ========================================================= */
 
 /* ---------- Root / Reset ---------- */
@@ -10,9 +14,11 @@
   --surface: #ffffff;
   --surface-2: #eef8ff;
   --paper: #ffffff;
+
   --ink: #0b1220;
   --ink-2: #22314a;
   --muted: #6a7a93;
+  --muted-2: #52637d;
 
   /* Accent (yellow) */
   --accent: #f7c948;
@@ -25,19 +31,28 @@
   --bad:  #ef4444;
 
   /* UI */
-  --border: rgba(255,255,255,.10);
+  --border: rgba(13,23,44,.12);
   --border-light: #e7edf6;
-  --shadow: 0 18px 50px rgba(0,0,0,.22);
+
+  --shadow: 0 18px 50px rgba(0,0,0,.18);
   --shadow-soft: 0 10px 30px rgba(13,23,44,.12);
+
   --radius-xl: 22px;
   --radius: 16px;
   --radius-sm: 12px;
 
   --container: min(1160px, 92%);
+
+  /* “Dark panel” (dropdowns, overlays) */
+  --night: rgba(18,31,56,.96);
+  --night-border: rgba(255,255,255,.12);
+  --night-ink: rgba(234,241,255,.92);
+  --night-muted: rgba(234,241,255,.72);
 }
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -53,7 +68,6 @@ body{
   color: var(--ink);
 }
 
-
 img{ max-width: 100%; display:block; }
 a{ color: inherit; }
 :focus-visible{
@@ -64,7 +78,9 @@ a{ color: inherit; }
 
 .wrap{ width: var(--container); margin-inline: auto; }
 
-/* ---------- Top Bar / Nav ---------- */
+/* =========================================================
+   TOP BAR / NAV (Main Site)
+========================================================= */
 .topbar{
   position: sticky;
   top: 0;
@@ -82,6 +98,44 @@ a{ color: inherit; }
   gap: 14px;
 }
 
+/* =========================================================
+   LOGO / ICON — Professional Badge (Main + County)
+   Replace your existing .brandmark img and .brand-logo rules
+========================================================= */
+
+.brandmark img,
+.brand-logo{
+  width: 44px;
+  height: 44px;
+
+  /* Makes the square feel intentional */
+  padding: 0px;
+  border-radius: 14px;
+
+  /* Blends into your climate-light background */
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(13,23,44,.12);
+
+  /* Keeps the icon centered */
+  object-fit: contain;
+  object-position: center;
+  display: block;
+
+  /* Softer, cleaner than heavy drop-shadow */
+  box-shadow: 0 10px 22px rgba(13,23,44,.10);
+
+  /* Remove harsh cutout feel */
+  filter: none;
+}
+
+/* Optional: subtle “premium” hover */
+.brandmark:hover img,
+.brand:hover .brand-logo{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(13,23,44,.14);
+  transition: .18s ease;
+}
+
 .brandmark{
   display:flex;
   align-items:center;
@@ -89,12 +143,7 @@ a{ color: inherit; }
   text-decoration:none;
   min-width: 220px;
 }
-.brandmark img{
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
-}
+
 .brandmark .title{
   display:flex;
   flex-direction: column;
@@ -103,6 +152,7 @@ a{ color: inherit; }
 .brandmark .title strong{
   font-size: 16px;
   letter-spacing: .4px;
+  color: var(--ink);
 }
 .brandmark .title span{
   font-size: 12px;
@@ -110,6 +160,8 @@ a{ color: inherit; }
 }
 
 .nav-toggle{ display:none; }
+
+/* Burger (main site) */
 .burger{
   display:none;
   width: 44px;
@@ -167,18 +219,15 @@ a{ color: inherit; }
   color: #0b1220;
 }
 
+/* County pages active link helper (kept) */
 .nav-links a.active{
   background: rgba(247,201,72,.28);
   border-color: rgba(247,201,72,.45);
   color: #0b1220;
 }
 
-
-
-/* Dropdown */
-.menu{
-  position: relative;
-}
+/* Dropdown (main site) */
+.menu{ position: relative; }
 .menu > .menu-btn{
   display:inline-flex;
   align-items:center;
@@ -197,8 +246,8 @@ a{ color: inherit; }
   min-width: 220px;
   padding: 10px;
   border-radius: 16px;
-  background: rgba(18,31,56,.96);
-  border: 1px solid rgba(255,255,255,.12);
+  background: var(--night);
+  border: 1px solid var(--night-border);
   box-shadow: var(--shadow);
   opacity: 0;
   transform: translateY(6px);
@@ -210,7 +259,7 @@ a{ color: inherit; }
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid transparent;
-  color: rgba(234,241,255,.92);
+  color: var(--night-ink);
 }
 .menu-panel a:hover{
   background: rgba(247,201,72,.16);
@@ -223,7 +272,7 @@ a{ color: inherit; }
   pointer-events: auto;
 }
 
-/* Buttons */
+/* Buttons (global) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -238,6 +287,7 @@ a{ color: inherit; }
   cursor:pointer;
   transition: .18s ease;
 }
+
 .btn-primary{
   background: linear-gradient(180deg, var(--accent) 0%, #f5b000 100%);
   color: var(--accent-ink);
@@ -245,17 +295,19 @@ a{ color: inherit; }
 }
 .btn-primary:hover{ filter: brightness(1.02); transform: translateY(-1px); }
 
+/* Quiet button: make it readable on LIGHT background */
 .btn-quiet{
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.12);
-  color: rgba(234,241,255,.92);
+  background: rgba(11,18,32,.04);
+  border-color: rgba(13,23,44,.12);
+  color: rgba(11,18,32,.88);
 }
-.btn-quiet:hover{ background: rgba(255,255,255,.09); }
+.btn-quiet:hover{ background: rgba(11,18,32,.06); }
 
-/* ---------- Hero ---------- */
-.hero{
-  padding: 42px 0 26px;
-}
+/* =========================================================
+   HERO
+========================================================= */
+.hero{ padding: 42px 0 26px; }
+
 .hero-grid{
   display:grid;
   grid-template-columns: 1.15fr .85fr;
@@ -265,9 +317,8 @@ a{ color: inherit; }
 
 .hero-card{
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,.10);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+  border: 1px solid rgba(13,23,44,.10);
+  background: rgba(255,255,255,.55);
   box-shadow: var(--shadow);
   overflow:hidden;
 }
@@ -283,10 +334,10 @@ a{ color: inherit; }
   gap: 8px;
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(247,201,72,.16);
-  border: 1px solid rgba(247,201,72,.26);
-  color: rgba(255,255,255,.95);
-  font-weight: 700;
+  background: rgba(247,201,72,.18);
+  border: 1px solid rgba(247,201,72,.28);
+  color: rgba(11,18,32,.92);
+  font-weight: 800;
   font-size: 12px;
 }
 .badge .dot{
@@ -302,9 +353,10 @@ a{ color: inherit; }
   font-size: clamp(26px, 2.8vw + 10px, 44px);
   line-height: 1.15;
   letter-spacing: .2px;
+  color: var(--ink);
 }
 .hero-message h1 span{
-  color: var(--accent-2);
+  color: #b57900; /* richer accent on white; keeps your yellow story */
 }
 .hero-message p{
   margin: 0;
@@ -330,8 +382,8 @@ a{ color: inherit; }
   height: 260px;
   border-radius: var(--radius-xl);
   overflow:hidden;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(13,23,44,.10);
+  background: rgba(255,255,255,.55);
   box-shadow: var(--shadow);
 }
 .media-frame img{
@@ -340,10 +392,11 @@ a{ color: inherit; }
   object-fit: cover;
 }
 
-/* ---------- Quick Stats ---------- */
-.stats{
-  padding: 18px;
-}
+/* =========================================================
+   QUICK STATS (Main Hero Right)
+========================================================= */
+.stats{ padding: 18px; }
+
 .stats-head{
   display:flex;
   align-items:flex-start;
@@ -355,57 +408,58 @@ a{ color: inherit; }
   margin:0;
   font-size: 16px;
   letter-spacing: .2px;
+  color: var(--ink);
 }
 .stats-head .hint{
   margin:0;
   color: rgba(34,49,74,.65);
   font-size: 12.5px;
 }
+
 .stats-grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
+
 .kpi{
   padding: 14px 14px 12px;
   border-radius: 18px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(13,23,44,.10);
   transition: .18s ease;
 }
 .kpi:hover{
   transform: translateY(-1px);
-  background: rgba(255,255,255,.07);
+  background: rgba(255,255,255,.85);
 }
 .kpi .label{
   font-size: 12.5px;
   color: rgba(34,49,74,.65);
   margin: 0 0 8px;
-  font-weight: 600;
+  font-weight: 700;
 }
 .kpi .value{
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 900;
   margin: 0;
   letter-spacing: .2px;
+  color: var(--ink);
 }
-.kpi .value.good{ color: #a7f3d0; }
-.kpi .value.warn{ color: #fde68a; }
-.kpi .value.neutral{ color: #eaf1ff; }
+.kpi .value.good{ color: #0f8a5d; }
+.kpi .value.warn{ color: #b45309; }
+.kpi .value.neutral{ color: var(--ink); }
 
-/* ---------- Section Shell (light) ---------- */
-.section{
-  padding: 30px 0;
-}
+/* =========================================================
+   SECTION SHELL (Light)
+========================================================= */
+.section{ padding: 30px 0; }
 
 .section-light{
   background: #f6f8fc;
   color: var(--ink);
 }
-
-.section-light .wrap{
-  color: var(--ink);
-}
+.section-light .wrap{ color: var(--ink); }
 
 .section-title{
   display:flex;
@@ -418,15 +472,18 @@ a{ color: inherit; }
   margin:0;
   font-size: clamp(20px, 2vw + 8px, 28px);
   letter-spacing: .2px;
+  color: var(--ink);
 }
 .section-title p{
   margin:0;
-  color: #52637d;
+  color: var(--muted-2);
   max-width: 70ch;
   font-size: 14px;
 }
 
-/* ---------- Dashboard Preview ---------- */
+/* =========================================================
+   DASHBOARD PREVIEW (Main Site)
+========================================================= */
 .panel{
   display:grid;
   grid-template-columns: 1.05fr .95fr;
@@ -451,15 +508,14 @@ a{ color: inherit; }
   border-radius: 999px;
   background: rgba(247,201,72,.28);
   color: #3a2a00;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 12px;
 }
-.panel-body{
-  padding: 16px 18px;
-}
+.panel-body{ padding: 16px 18px; }
 .panel-body h3{
   margin: 0 0 8px;
   font-size: 16px;
+  color: var(--ink);
 }
 .panel-body .sub{
   margin: 0;
@@ -503,7 +559,9 @@ a{ color: inherit; }
   color: #60718a;
 }
 
-/* ---------- Projects Explorer ---------- */
+/* =========================================================
+   PROJECTS EXPLORER (Main Site)
+========================================================= */
 .filters{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -516,6 +574,7 @@ a{ color: inherit; }
   align-items: end;
   margin-bottom: 14px;
 }
+
 .field{
   flex: 1 1 200px;
   min-width: 190px;
@@ -524,7 +583,7 @@ a{ color: inherit; }
   gap: 6px;
 }
 .field label{
-  font-weight: 800;
+  font-weight: 900;
   font-size: 12px;
   color: #4f637d;
 }
@@ -534,7 +593,7 @@ a{ color: inherit; }
   border: 1px solid #dde6f2;
   background: #f7f9ff;
   padding: 0 12px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1c2a44;
 }
 .field select:focus{
@@ -543,6 +602,7 @@ a{ color: inherit; }
   border-color: rgba(247,201,72,.85);
   background: #fff;
 }
+
 .filter-actions{
   display:flex;
   gap: 10px;
@@ -597,7 +657,7 @@ a{ color: inherit; }
 }
 .tag{
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
   color: #1f2f4b;
   background: rgba(247,201,72,.25);
   border: 1px solid rgba(247,201,72,.45);
@@ -615,7 +675,9 @@ a{ color: inherit; }
 }
 .card a.more:hover{ text-decoration: underline; }
 
-/* ---------- Resources ---------- */
+/* =========================================================
+   RESOURCES (Main Site)
+========================================================= */
 .resources-grid{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -650,7 +712,9 @@ a{ color: inherit; }
   border: 1px solid rgba(247,201,72,.35);
 }
 
-/* ---------- Contact ---------- */
+/* =========================================================
+   CONTACT (Main Site)
+========================================================= */
 .contact-shell{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -672,7 +736,8 @@ a{ color: inherit; }
   border: 1px solid #dde6f2;
   background: #f7f9ff;
   padding: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--ink);
 }
 .form textarea{ min-height: 140px; resize: vertical; }
 .form input:focus,
@@ -697,7 +762,9 @@ a{ color: inherit; }
   justify-content:flex-start;
 }
 
-/* ---------- Footer ---------- */
+/* =========================================================
+   FOOTER
+========================================================= */
 .footer{
   padding: 20px 0 32px;
   color: rgba(11,18,32,.70);
@@ -715,7 +782,9 @@ a{ color: inherit; }
 .footer a:hover{ color: rgba(11,18,32,.95); }
 .sep{ opacity:.55; padding: 0 8px; }
 
-/* ---------- Responsive ---------- */
+/* =========================================================
+   RESPONSIVE (Main Site)
+========================================================= */
 @media (max-width: 1020px){
   .hero-grid{ grid-template-columns: 1fr; }
   .panel{ grid-template-columns: 1fr; }
@@ -745,9 +814,19 @@ a{ color: inherit; }
     transform: translateY(0);
     pointer-events:auto;
   }
-  .menu-panel{ position: static; opacity: 1; transform:none; pointer-events:auto; margin-top: 6px; }
+  .menu-panel{
+    position: static;
+    opacity: 1;
+    transform:none;
+    pointer-events:auto;
+    margin-top: 6px;
+  }
   .menu{ width:100%; }
-  .menu > .menu-btn{ width:100%; justify-content: space-between; cursor: pointer; }
+  .menu > .menu-btn{
+    width:100%;
+    justify-content: space-between;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 700px){
@@ -759,8 +838,7 @@ a{ color: inherit; }
 }
 
 /* =========================================================
-   ADD: County Pages Support (makueni.html, vihiga.html)
-   Place at END of styles.css
+   COUNTY PAGES SUPPORT (makueni.html, vihiga.html)
 ========================================================= */
 
 /* Your new pages use .container; your CSS uses .wrap */
@@ -768,8 +846,6 @@ a{ color: inherit; }
   width: var(--container);
   margin-inline: auto;
 }
-
-/* Optional: if you want consistent section padding like .wrap pages */
 .container > *{ max-width: 100%; }
 
 /* Skip link (accessibility) */
@@ -786,11 +862,9 @@ a{ color: inherit; }
   text-decoration: none;
   box-shadow: var(--shadow-soft);
 }
-.skip-link:focus{
-  left: 16px;
-}
+.skip-link:focus{ left: 16px; }
 
-/* ---------- Navbar (new county pages) ---------- */
+/* ---------- Navbar (county pages) ---------- */
 .navbar{
   position: sticky;
   top: 0;
@@ -816,13 +890,6 @@ a{ color: inherit; }
   min-width: 220px;
 }
 
-.brand-logo{
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));
-}
-
 .brand-text{
   font-weight: 900;
   letter-spacing: .4px;
@@ -830,7 +897,7 @@ a{ color: inherit; }
   color: rgba(11,18,32,.92);
 }
 
-/* Nav links */
+/* Nav links (county) */
 .nav-links{
   display:flex;
   align-items:center;
@@ -848,19 +915,17 @@ a{ color: inherit; }
   border: 1px solid transparent;
   transition: .18s ease;
 }
-
 .nav-links a:hover{
-  background: rgba(34,197,94,.08);      /* soft green hover */
+  background: rgba(34,197,94,.08);
   border-color: rgba(13,23,44,.10);
 }
-
-.navlinks a.is-active{
+.nav-links a.active{
   background: rgba(247,201,72,.28);
   border-color: rgba(247,201,72,.45);
   color: #0b1220;
 }
 
-/* Buttons used in new pages */
+/* Buttons used in county pages */
 .btn-cta{ 
   background: linear-gradient(180deg, var(--accent) 0%, #f5b000 100%);
   color: var(--accent-ink);
@@ -868,28 +933,24 @@ a{ color: inherit; }
 }
 .btn-cta:hover{ filter: brightness(1.02); transform: translateY(-1px); }
 
-.btn-ghost{
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  color: rgba(234,241,255,.92);
-}
-.btn-ghost:hover{ background: rgba(255,255,255,.09); }
-
+/* Ghost/login buttons: readable on light */
+.btn-ghost,
 .btn-login{
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  color: rgba(234,241,255,.92);
+  background: rgba(11,18,32,.04);
+  border: 1px solid rgba(13,23,44,.12);
+  color: rgba(11,18,32,.88);
 }
-.btn-login:hover{ background: rgba(255,255,255,.09); }
+.btn-ghost:hover,
+.btn-login:hover{ background: rgba(11,18,32,.06); }
 
-/* Burger (new pages use spans, not <i>) */
+/* Burger (county pages use spans) */
 .nav-burger{
   display:none;
   width: 44px;
   height: 40px;
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid rgba(13,23,44,.14);
   border-radius: 12px;
-  background: rgba(255,255,255,.04);
+  background: rgba(11,18,32,.04);
   cursor:pointer;
   align-items:center;
   justify-content:center;
@@ -914,8 +975,8 @@ a{ color: inherit; }
   min-width: 220px;
   padding: 10px;
   border-radius: 16px;
-  background: rgba(18,31,56,.96);
-  border: 1px solid rgba(255,255,255,.12);
+  background: var(--night);
+  border: 1px solid var(--night-border);
   box-shadow: var(--shadow);
   opacity: 0;
   transform: translateY(6px);
@@ -928,7 +989,7 @@ a{ color: inherit; }
   padding: 10px 12px;
   border-radius: 12px;
   border: 1px solid transparent;
-  color: rgba(234,241,255,.92);
+  color: var(--night-ink);
 }
 
 .dropdown a:hover{
@@ -949,9 +1010,7 @@ a{ color: inherit; }
 .dd-caret{ display:none; }
 
 /* ---------- Page head / breadcrumb strip ---------- */
-.page-head{
-  padding: 18px 0 0;
-}
+.page-head{ padding: 18px 0 0; }
 
 .page-head-inner{
   display:flex;
@@ -972,38 +1031,36 @@ a{ color: inherit; }
   align-items:center;
   padding: 7px 10px;
   border-radius: 999px;
-  background: rgba(247,201,72,.16);
-  border: 1px solid rgba(247,201,72,.26);
-  color: rgba(255,255,255,.95);
-  font-weight: 800;
+  background: rgba(247,201,72,.18);
+  border: 1px solid rgba(247,201,72,.28);
+  color: rgba(11,18,32,.92);
+  font-weight: 900;
   font-size: 12px;
 }
 
 .page-meta{
   font-size: 12.5px;
-  color: rgba(234,241,255,.72);
-  font-weight: 700;
+  color: rgba(34,49,74,.65);
+  font-weight: 800;
 }
 
 .breadcrumbs{
   font-size: 12.5px;
-  color: rgba(234,241,255,.70);
+  color: rgba(34,49,74,.65);
   display:flex;
   gap: 8px;
   align-items:center;
   flex-wrap: wrap;
 }
 .breadcrumbs a{
-  color: rgba(234,241,255,.80);
+  color: rgba(11,18,32,.88);
   text-decoration:none;
-  font-weight: 800;
+  font-weight: 900;
 }
 .breadcrumbs a:hover{ text-decoration: underline; }
 
-/* ---------- County hero layout (hero-inner used in new pages) ---------- */
-.hero--county{
-  padding: 26px 0 18px;
-}
+/* ---------- County hero layout ---------- */
+.hero--county{ padding: 26px 0 18px; }
 
 .hero--county .hero-inner{
   display:grid;
@@ -1015,8 +1072,8 @@ a{ color: inherit; }
 .hero--county .hero-media{
   border-radius: var(--radius-xl);
   overflow:hidden;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(13,23,44,.10);
+  background: rgba(255,255,255,.55);
   box-shadow: var(--shadow);
 }
 
@@ -1031,6 +1088,7 @@ a{ color: inherit; }
   font-size: clamp(26px, 2.8vw + 10px, 44px);
   line-height: 1.15;
   letter-spacing: .2px;
+  color: var(--ink);
 }
 .hero-rotator .slide{ display:block; }
 
@@ -1038,23 +1096,23 @@ a{ color: inherit; }
   height: 1px;
   width: 100%;
   margin: 14px 0;
-  background: rgba(255,255,255,.12);
+  background: rgba(13,23,44,.12);
 }
 
 .lead{
   margin: 0;
-  color: rgba(234,241,255,.80);
+  color: rgba(34,49,74,.78);
   max-width: 70ch;
   font-size: 14.5px;
 }
 
-/* ---------- Quick stats cards (new pages) ---------- */
+/* ---------- Quick stats cards (county pages) ---------- */
 .quick-stats{
   margin-top: 16px;
   padding: 16px;
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,.10);
-  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(13,23,44,.10);
+  background: rgba(255,255,255,.55);
   box-shadow: var(--shadow);
 }
 
@@ -1063,6 +1121,7 @@ a{ color: inherit; }
   letter-spacing: .2px;
   margin-bottom: 12px;
   font-size: 14px;
+  color: var(--ink);
 }
 
 .quick-stats .cards{
@@ -1074,33 +1133,34 @@ a{ color: inherit; }
 .stat-card{
   padding: 14px;
   border-radius: 18px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(13,23,44,.10);
   transition: .18s ease;
 }
 .stat-card:hover{
   transform: translateY(-1px);
-  background: rgba(255,255,255,.07);
+  background: rgba(255,255,255,.85);
 }
 .stat-card h3{
   margin:0 0 8px;
   font-size: 12.5px;
-  color: rgba(234,241,255,.78);
-  font-weight: 800;
+  color: rgba(34,49,74,.70);
+  font-weight: 900;
 }
 .stat-number{
   font-size: 28px;
   font-weight: 900;
   margin: 0;
+  color: var(--ink);
 }
-.stat-number.warn{ color: #fde68a; }
+.stat-number.warn{ color: #b45309; }
 .stat-sub{
   margin-top: 6px;
   font-size: 12.5px;
-  color: rgba(234,241,255,.70);
+  color: rgba(34,49,74,.65);
 }
 
-/* ---------- Make these sections "light" like your section-light ---------- */
+/* ---------- Make these sections "light" ---------- */
 .dash-preview,
 .projects-section,
 .gallery-strip,
@@ -1114,10 +1174,10 @@ a{ color: inherit; }
 .projects-section .dash-sub,
 .gallery-strip .dash-sub,
 .contact-section .contact-sub{
-  color: #52637d;
+  color: var(--muted-2);
 }
 
-/* Dashboard cards */
+/* Dashboard cards (county pages) */
 .dash-head{ margin-bottom: 16px; }
 .dash-head h2{ margin: 0 0 8px; color: #0b1220; }
 .dash-sub{ margin: 0; font-size: 14px; max-width: 75ch; }
@@ -1182,7 +1242,7 @@ a{ color: inherit; }
 }
 .dash-foot a:hover{ text-decoration: underline; }
 
-/* Projects filters + cards (new class names) */
+/* Projects filters + cards (county pages) */
 .projects-filters{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1283,7 +1343,7 @@ a{ color: inherit; }
 }
 .read-more-btn:hover{ text-decoration: underline; }
 
-/* Resources grid */
+/* Resources grid (county pages) */
 .gallery-grid{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1322,7 +1382,7 @@ a{ color: inherit; }
   border: 1px solid rgba(247,201,72,.35);
 }
 
-/* Contact form blocks */
+/* Contact form blocks (county pages) */
 .contact-inner{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1354,6 +1414,7 @@ a{ color: inherit; }
   background: #f7f9ff;
   padding: 12px;
   font-weight: 700;
+  color: var(--ink);
 }
 
 .form-field textarea{ resize: vertical; }
@@ -1384,7 +1445,7 @@ a{ color: inherit; }
 }
 .btn-send:hover{ transform: translateY(-1px); }
 
-/* ---------- Responsive for new county pages ---------- */
+/* ---------- Responsive for county pages ---------- */
 @media (max-width: 1020px){
   .hero--county .hero-inner{ grid-template-columns: 1fr; }
   .dash-grid{ grid-template-columns: 1fr; }
@@ -1400,8 +1461,8 @@ a{ color: inherit; }
     right: 0;
     top: 68px;
     padding: 14px;
-    background: rgba(11,18,32,.92);
-    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.94);
+    border-bottom: 1px solid rgba(13,23,44,.10);
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
@@ -1428,6 +1489,7 @@ a{ color: inherit; }
     margin-top: 6px;
   }
   .dd-toggle{ display:block; position:absolute; opacity:0; pointer-events:auto; }
+
   .dd-caret{
     display:inline-flex;
     align-items:center;
@@ -1435,10 +1497,11 @@ a{ color: inherit; }
     width: 34px;
     height: 34px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(13,23,44,.12);
+    background: rgba(11,18,32,.04);
     cursor: pointer;
     margin-left: auto;
+    color: rgba(11,18,32,.82);
   }
   .dd-caret::before{ content:"▾"; opacity:.9; }
 
@@ -1454,21 +1517,16 @@ a{ color: inherit; }
 }
 
 /* =========================================================
-   ADD: Project Details Page (project-details.html)
-   Paste at END of styles.css
+   PROJECT DETAILS PAGE (project-details.html)
 ========================================================= */
-
-/* Page wrapper */
-.details-page{
-  padding: 22px 0 56px;
-}
+.details-page{ padding: 22px 0 56px; }
 
 /* Head */
 .details-head{
   margin: 10px 0 18px;
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,.03) 100%);
+  border: 1px solid rgba(13,23,44,.10);
+  background: rgba(255,255,255,.55);
   box-shadow: var(--shadow);
   overflow:hidden;
 }
@@ -1484,10 +1542,11 @@ a{ color: inherit; }
   margin: 10px 0 6px;
   font-size: clamp(22px, 2vw + 10px, 34px);
   line-height: 1.15;
+  color: var(--ink);
 }
 .details-sub{
   margin: 0;
-  color: rgba(234,241,255,.78);
+  color: rgba(34,49,74,.75);
   font-size: 14px;
   max-width: 75ch;
 }
@@ -1510,8 +1569,8 @@ a{ color: inherit; }
 }
 .back-link{
   text-decoration:none;
-  font-weight: 800;
-  color: rgba(234,241,255,.92);
+  font-weight: 900;
+  color: rgba(11,18,32,.88);
 }
 .back-link:hover{ text-decoration: underline; }
 
@@ -1520,9 +1579,9 @@ a{ color: inherit; }
   align-items:center;
   padding: 7px 10px;
   border-radius: 999px;
-  background: rgba(247,201,72,.16);
-  border: 1px solid rgba(247,201,72,.26);
-  color: rgba(255,255,255,.95);
+  background: rgba(247,201,72,.18);
+  border: 1px solid rgba(247,201,72,.28);
+  color: rgba(11,18,32,.92);
   font-weight: 900;
   font-size: 12px;
 }
@@ -1534,7 +1593,7 @@ a{ color: inherit; }
   gap: 14px;
 }
 
-/* Light cards (same language as your light sections) */
+/* Light cards */
 .detail-card{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1635,43 +1694,3 @@ a{ color: inherit; }
 @media (max-width: 520px){
   .meta-grid{ grid-template-columns: 1fr; }
 }
-
-
-/* ===============================
-   LIGHT THEME TEXT VISIBILITY FIX
-   Paste at END of styles.css
-================================= */
-
-.brandmark .title span{ color: rgba(11,18,32,.65); }
-
-.navlinks a, .navlinks button{ color: rgba(11,18,32,.88); }
-.navlinks a:hover{
-  background: rgba(34,197,94,.08);
-  border-color: rgba(13,23,44,.10);
-}
-
-.burger{
-  border: 1px solid rgba(13,23,44,.14);
-  background: rgba(11,18,32,.04);
-}
-.burger i, .burger i::before, .burger i::after{ background: rgba(11,18,32,.88); }
-
-@media (max-width: 860px){
-  .navlinks{
-    background: rgba(255,255,255,.94);
-    border-bottom: 1px solid rgba(13,23,44,.10);
-  }
-}
-
-.brand-text{ color: rgba(11,18,32,.92); }
-.nav-burger span{ background: rgba(11,18,32,.88); }
-
-.nav-links a.active{
-  background: rgba(247,201,72,.28);
-  border-color: rgba(247,201,72,.45);
-  color: #0b1220;
-}
-
-.hero-message p{ color: rgba(34,49,74,.78); }
-.stats-head .hint{ color: rgba(34,49,74,.65); }
-.kpi .label{ color: rgba(34,49,74,.65); }
