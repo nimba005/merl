@@ -1,13 +1,4 @@
-/* =========================================================
-   MERL UI v2 — Climate Light Theme (Yellow Accent)
-   File: styles.css
-   Notes:
-   - Keeps ALL your existing classes/structures.
-   - Fixes ALL “dark-theme leftover” text colors so nothing disappears.
-   - Unifies main site + county pages + details page on the same light theme.
-========================================================= */
-
-/* ---------- Root / Reset ---------- */
+/* ---------- Root ---------- */
 :root{
   /* Core */
   --bg: #f4fbf7;
@@ -98,37 +89,20 @@ a{ color: inherit; }
   gap: 14px;
 }
 
-/* =========================================================
-   LOGO / ICON — Professional Badge (Main + County)
-   Replace your existing .brandmark img and .brand-logo rules
-========================================================= */
-
 .brandmark img,
 .brand-logo{
   width: 44px;
   height: 44px;
-
-  /* Makes the square feel intentional */
   padding: 0px;
   border-radius: 14px;
-
-  /* Blends into your climate-light background */
   background: rgba(255,255,255,.85);
   border: 1px solid rgba(13,23,44,.12);
-
-  /* Keeps the icon centered */
   object-fit: contain;
   object-position: center;
   display: block;
-
-  /* Softer, cleaner than heavy drop-shadow */
   box-shadow: 0 10px 22px rgba(13,23,44,.10);
-
-  /* Remove harsh cutout feel */
   filter: none;
 }
-
-/* Optional: subtle “premium” hover */
 .brandmark:hover img,
 .brand:hover .brand-logo{
   transform: translateY(-1px);
@@ -160,8 +134,6 @@ a{ color: inherit; }
 }
 
 .nav-toggle{ display:none; }
-
-/* Burger (main site) */
 .burger{
   display:none;
   width: 44px;
@@ -218,15 +190,11 @@ a{ color: inherit; }
   border-color: rgba(247,201,72,.45);
   color: #0b1220;
 }
-
-/* County pages active link helper (kept) */
 .nav-links a.active{
   background: rgba(247,201,72,.28);
   border-color: rgba(247,201,72,.45);
   color: #0b1220;
 }
-
-/* Dropdown (main site) */
 .menu{ position: relative; }
 .menu > .menu-btn{
   display:inline-flex;
@@ -271,8 +239,6 @@ a{ color: inherit; }
   transform: translateY(0);
   pointer-events: auto;
 }
-
-/* Buttons (global) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -294,8 +260,6 @@ a{ color: inherit; }
   box-shadow: 0 14px 26px rgba(247,201,72,.22);
 }
 .btn-primary:hover{ filter: brightness(1.02); transform: translateY(-1px); }
-
-/* Quiet button: make it readable on LIGHT background */
 .btn-quiet{
   background: rgba(11,18,32,.04);
   border-color: rgba(13,23,44,.12);
@@ -322,8 +286,6 @@ a{ color: inherit; }
   box-shadow: var(--shadow);
   overflow:hidden;
 }
-
-/* Left: message */
 .hero-message{
   padding: 26px 26px 22px;
   position: relative;
@@ -356,7 +318,7 @@ a{ color: inherit; }
   color: var(--ink);
 }
 .hero-message h1 span{
-  color: #b57900; /* richer accent on white; keeps your yellow story */
+  color: #b57900;
 }
 .hero-message p{
   margin: 0;
@@ -371,8 +333,6 @@ a{ color: inherit; }
   gap: 10px;
   margin-top: 18px;
 }
-
-/* Right: media */
 .hero-media{
   display:flex;
   flex-direction: column;
@@ -391,10 +351,6 @@ a{ color: inherit; }
   height: 100%;
   object-fit: cover;
 }
-
-/* =========================================================
-   QUICK STATS (Main Hero Right)
-========================================================= */
 .stats{ padding: 18px; }
 
 .stats-head{
@@ -480,10 +436,6 @@ a{ color: inherit; }
   max-width: 70ch;
   font-size: 14px;
 }
-
-/* =========================================================
-   DASHBOARD PREVIEW (Main Site)
-========================================================= */
 .panel{
   display:grid;
   grid-template-columns: 1.05fr .95fr;
@@ -528,8 +480,6 @@ a{ color: inherit; }
   gap: 10px;
   flex-wrap: wrap;
 }
-
-/* Metric cards */
 .mini-grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -558,10 +508,6 @@ a{ color: inherit; }
   font-size: 12.5px;
   color: #60718a;
 }
-
-/* =========================================================
-   PROJECTS EXPLORER (Main Site)
-========================================================= */
 .filters{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -674,10 +620,6 @@ a{ color: inherit; }
   align-items:center;
 }
 .card a.more:hover{ text-decoration: underline; }
-
-/* =========================================================
-   RESOURCES (Main Site)
-========================================================= */
 .resources-grid{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -711,10 +653,6 @@ a{ color: inherit; }
   color: #fff;
   border: 1px solid rgba(247,201,72,.35);
 }
-
-/* =========================================================
-   CONTACT (Main Site)
-========================================================= */
 .contact-shell{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -761,10 +699,6 @@ a{ color: inherit; }
   align-items:center;
   justify-content:flex-start;
 }
-
-/* =========================================================
-   FOOTER
-========================================================= */
 .footer{
   padding: 20px 0 32px;
   color: rgba(11,18,32,.70);
@@ -781,10 +715,6 @@ a{ color: inherit; }
 .footer a{ color: rgba(11,18,32,.78); }
 .footer a:hover{ color: rgba(11,18,32,.95); }
 .sep{ opacity:.55; padding: 0 8px; }
-
-/* =========================================================
-   RESPONSIVE (Main Site)
-========================================================= */
 @media (max-width: 1020px){
   .hero-grid{ grid-template-columns: 1fr; }
   .panel{ grid-template-columns: 1fr; }
@@ -836,19 +766,11 @@ a{ color: inherit; }
   .resources-grid{ grid-template-columns: repeat(2, 1fr); }
   .form{ grid-template-columns: 1fr; }
 }
-
-/* =========================================================
-   COUNTY PAGES SUPPORT (makueni.html, vihiga.html)
-========================================================= */
-
-/* Your new pages use .container; your CSS uses .wrap */
 .container{
   width: var(--container);
   margin-inline: auto;
 }
 .container > *{ max-width: 100%; }
-
-/* Skip link (accessibility) */
 .skip-link{
   position: absolute;
   left: -999px;
@@ -863,8 +785,6 @@ a{ color: inherit; }
   box-shadow: var(--shadow-soft);
 }
 .skip-link:focus{ left: 16px; }
-
-/* ---------- Navbar (county pages) ---------- */
 .navbar{
   position: sticky;
   top: 0;
@@ -924,16 +844,12 @@ a{ color: inherit; }
   border-color: rgba(247,201,72,.45);
   color: #0b1220;
 }
-
-/* Buttons used in county pages */
 .btn-cta{ 
   background: linear-gradient(180deg, var(--accent) 0%, #f5b000 100%);
   color: var(--accent-ink);
   box-shadow: 0 14px 26px rgba(247,201,72,.22);
 }
 .btn-cta:hover{ filter: brightness(1.02); transform: translateY(-1px); }
-
-/* Ghost/login buttons: readable on light */
 .btn-ghost,
 .btn-login{
   background: rgba(11,18,32,.04);
@@ -942,8 +858,6 @@ a{ color: inherit; }
 }
 .btn-ghost:hover,
 .btn-login:hover{ background: rgba(11,18,32,.06); }
-
-/* Burger (county pages use spans) */
 .nav-burger{
   display:none;
   width: 44px;
@@ -996,20 +910,14 @@ a{ color: inherit; }
   background: rgba(247,201,72,.16);
   border-color: rgba(247,201,72,.28);
 }
-
-/* Open dropdown on hover/focus */
 .has-dd:hover .dropdown,
 .has-dd:focus-within .dropdown{
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-
-/* Dropdown toggle controls used in HTML */
 .dd-toggle{ display:none; }
 .dd-caret{ display:none; }
-
-/* ---------- Page head / breadcrumb strip ---------- */
 .page-head{ padding: 18px 0 0; }
 
 .page-head-inner{
@@ -1105,8 +1013,6 @@ a{ color: inherit; }
   max-width: 70ch;
   font-size: 14.5px;
 }
-
-/* ---------- Quick stats cards (county pages) ---------- */
 .quick-stats{
   margin-top: 16px;
   padding: 16px;
@@ -1159,8 +1065,6 @@ a{ color: inherit; }
   font-size: 12.5px;
   color: rgba(34,49,74,.65);
 }
-
-/* ---------- Make these sections "light" ---------- */
 .dash-preview,
 .projects-section,
 .gallery-strip,
@@ -1176,8 +1080,6 @@ a{ color: inherit; }
 .contact-section .contact-sub{
   color: var(--muted-2);
 }
-
-/* Dashboard cards (county pages) */
 .dash-head{ margin-bottom: 16px; }
 .dash-head h2{ margin: 0 0 8px; color: #0b1220; }
 .dash-sub{ margin: 0; font-size: 14px; max-width: 75ch; }
@@ -1241,8 +1143,6 @@ a{ color: inherit; }
   text-decoration:none;
 }
 .dash-foot a:hover{ text-decoration: underline; }
-
-/* Projects filters + cards (county pages) */
 .projects-filters{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1342,8 +1242,6 @@ a{ color: inherit; }
   align-items:center;
 }
 .read-more-btn:hover{ text-decoration: underline; }
-
-/* Resources grid (county pages) */
 .gallery-grid{
   display:grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1381,8 +1279,6 @@ a{ color: inherit; }
   color: #fff;
   border: 1px solid rgba(247,201,72,.35);
 }
-
-/* Contact form blocks (county pages) */
 .contact-inner{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1444,8 +1340,6 @@ a{ color: inherit; }
   transition: .18s ease;
 }
 .btn-send:hover{ transform: translateY(-1px); }
-
-/* ---------- Responsive for county pages ---------- */
 @media (max-width: 1020px){
   .hero--county .hero-inner{ grid-template-columns: 1fr; }
   .dash-grid{ grid-template-columns: 1fr; }
@@ -1471,15 +1365,11 @@ a{ color: inherit; }
     pointer-events:none;
     transition: .18s ease;
   }
-
-  /* Toggle open */
   .nav-toggle:checked ~ .nav-links{
     opacity: 1;
     transform: translateY(0);
     pointer-events:auto;
   }
-
-  /* Dropdown behaves like accordion */
   .dropdown{
     position: static;
     opacity: 1;
@@ -1504,8 +1394,6 @@ a{ color: inherit; }
     color: rgba(11,18,32,.82);
   }
   .dd-caret::before{ content:"▾"; opacity:.9; }
-
-  /* When checked, show dropdown */
   .dd-toggle:checked ~ .dropdown{ display:block; }
 }
 
@@ -1515,13 +1403,7 @@ a{ color: inherit; }
   .form-grid{ grid-template-columns: 1fr; }
   .quick-stats .cards{ grid-template-columns: 1fr; }
 }
-
-/* =========================================================
-   PROJECT DETAILS PAGE (project-details.html)
-========================================================= */
 .details-page{ padding: 22px 0 56px; }
-
-/* Head */
 .details-head{
   margin: 10px 0 18px;
   border-radius: var(--radius-xl);
@@ -1557,8 +1439,6 @@ a{ color: inherit; }
 .project-pane:target{ display:block; }
 .default-pane{ display:block; }
 .project-pane:target ~ .default-pane{ display:none; }
-
-/* Top row inside a project */
 .details-top{
   display:flex;
   align-items:center;
@@ -1585,15 +1465,11 @@ a{ color: inherit; }
   font-weight: 900;
   font-size: 12px;
 }
-
-/* Two-column layout */
 .detail-grid{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 14px;
 }
-
-/* Light cards */
 .detail-card{
   background: #fff;
   border: 1px solid var(--border-light);
@@ -1651,8 +1527,6 @@ a{ color: inherit; }
   color: #0b1220;
   font-size: 13.5px;
 }
-
-/* Default picker list */
 .project-list{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1683,8 +1557,6 @@ a{ color: inherit; }
   font-size: 13px;
   font-weight: 700;
 }
-
-/* Responsive */
 @media (max-width: 900px){
   .detail-grid{ grid-template-columns: 1fr; }
 }
