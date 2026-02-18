@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -81,22 +82,22 @@
           <div class="stats-grid">
             <div class="kpi">
               <p class="label">All Projects</p>
-              <p class="value neutral">20</p>
+              <p class="value neutral">35</p>
             </div>
 
             <div class="kpi">
               <p class="label">Ongoing</p>
-              <p class="value good">19</p>
+              <p class="value good">30</p>
             </div>
 
             <div class="kpi">
               <p class="label">Not Started</p>
-              <p class="value warn">0</p>
+              <p class="value warn">2</p>
             </div>
 
             <div class="kpi">
               <p class="label">Completed</p>
-              <p class="value warn">1</p>
+              <p class="value good">3</p>
             </div>
           </div>
         </div>
@@ -122,9 +123,11 @@
               <p class="value neutral">Vihiga / Makueni</p>
             </div>
             <div class="kpi">
-              <p class="label">Track investments</p>
-              <p class="value neutral">By sector & year</p>
+              <p class="label">Budget allocation</p>
+              <p class="value neutral">Across sectors</p>
+              <a href="#budget-chart" class="more">View graph →</a>
             </div>
+
             <div class="kpi">
               <p class="label">Access resources</p>
               <p class="value neutral">Guides & toolkits</p>
@@ -140,6 +143,50 @@
 
     </div>
   </section>
+
+  <!-- BUDGET ALLOCATION GRAPH -->
+  <section class="section section-light" id="budget-chart">
+    <div class="wrap">
+
+      <div class="section-title">
+        <div>
+          <h2>Budget allocation across sectors</h2>
+          <p>
+            Near–real-time insights on project performance, budget utilization,
+            sector investments, and service delivery outcomes across the county.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <canvas id="sectorBudgetChart" height="140"></canvas>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COUNTY FINANCIAL ALLOCATION TREND -->
+  <section class="section section-light" id="county-budget-trend">
+    <div class="wrap">
+
+      <div class="section-title">
+        <div>
+          <h2>County Climate Change Financial Allocation per Financial Year</h2>
+          <p>
+            Near–real-time insights on county-level climate finance allocations across financial years,
+            supporting transparency and cross-county comparison.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <canvas id="countyBudgetTrendChart" height="140"></canvas>
+      </div>
+
+    </div>
+  </section>
+
+
 
   <!-- DASHBOARD PREVIEW (LIGHT SECTION) -->
   <section class="section section-light" id="dashboard">
@@ -172,10 +219,12 @@
 
         <div class="mini-grid">
           <div class="mini">
-            <h4>Budget Utilization</h4>
-            <div class="big">Coming soon</div>
-            <div class="meta">FY 2024/25</div>
+            <h4>Financial Allocation Trend</h4>
+            <div class="big">County budgets</div>
+            <div class="meta">Per financial year</div>
+            <a href="#county-budget-trend" class="more">View chart →</a>
           </div>
+
           <div class="mini">
             <h4>Top Sectors</h4>
             <div class="big">4</div>
@@ -470,6 +519,89 @@
       form.addEventListener('change', apply);
       resetBtn.addEventListener('click', () => { form.reset(); apply(); });
     })();
+
+    // Sector budget chart
+    const ctx = document.getElementById('sectorBudgetChart');
+
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            "Food & Nutrition Security",
+            "Water & Fisheries",
+            "Health & Sanitation",
+            "Energy & Transport",
+            "Manufacturing",
+            "Forests & Wildlife",
+            "Disaster Risk",
+            "Waste Management",
+            "Biodiversity"
+          ],
+          datasets: [{
+            label: "Budget (in millions)",
+            data: [1000, 12, 0, 4, 0, 0, 0, 0, 0]
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: false }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "In millions"
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // County financial allocation trend chart
+    const countyTrendCtx = document.getElementById('countyBudgetTrendChart');
+
+    if (countyTrendCtx) {
+      new Chart(countyTrendCtx, {
+        type: 'line',
+        data: {
+          labels: ["Vihiga", "Makueni"],
+          datasets: [{
+            label: "Allocation (millions)",
+            data: [100, 195],
+            tension: 0.35,
+            pointRadius: 5,
+            borderWidth: 3,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: "In millions"
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: "County"
+              }
+            }
+          }
+        }
+      });
+    }
+
   </script>
 
 </body>

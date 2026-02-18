@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -106,7 +107,7 @@
 
               <article class="stat-card">
                 <h3>Ongoing Projects</h3>
-                <div class="stat-number">14</div>
+                <div class="stat-number">10</div>
                 <div class="stat-sub">&nbsp;</div>
               </article>
 
@@ -118,7 +119,7 @@
 
               <article class="stat-card">
                 <h3>Completed Projects</h3>
-                <div class="stat-number warn">0</div>
+                <div class="stat-number warn">3</div>
                 <div class="stat-sub">Completed in the last 12 months</div>
               </article>
             </div>
@@ -183,6 +184,33 @@
         </div>
       </div>
     </section>
+
+    <!-- COUNTY BUDGET TREND -->
+    <section class="section section-light" id="makueni-budget-trend">
+      <div class="container">
+
+        <div class="section-title">
+          <div>
+            <h2>Makueni Climate Budget Allocation Trend</h2>
+            <p>
+              Multi-year view of climate and development budget allocations across
+              financial years for Makueni County.
+            </p>
+          </div>
+
+          <div class="chart-actions">
+            <button id="makueniExportPNG" class="btn btn-ghost btn-sm">Export PNG</button>
+            <button id="makueniExportCSV" class="btn btn-ghost btn-sm">Export CSV</button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <canvas id="makueniBudgetChart" height="140"></canvas>
+        </div>
+
+      </div>
+    </section>
+
 
     <!-- PROJECTS EXPLORER -->
     <section id="projects" class="projects-section">
@@ -505,6 +533,110 @@
 
       applyFilters();
     })();
+    /* =========================
+      MAKUENI BUDGET TREND CHART
+    ========================= */
+
+    const makueniBudgetData = {
+      labels: ["FY22/23", "FY23/24", "FY24/25"],
+      datasets: [
+        {
+          label: "Water & Sanitation",
+          data: [62, 74, 95],
+          tension: 0.35
+        },
+        {
+          label: "Agriculture",
+          data: [48, 59, 83],
+          tension: 0.35
+        },
+        {
+          label: "Infrastructure",
+          data: [55, 63, 88],
+          tension: 0.35
+        }
+      ]
+    };
+
+    const makueniCtx = document.getElementById('makueniBudgetChart');
+
+    let makueniChart = null;
+
+    if (makueniCtx && window.Chart) {
+      makueniChart = new Chart(makueniCtx, {
+        type: 'line',
+        data: makueniBudgetData,
+        options: {
+          responsive: true,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          },
+          scales: {
+            y: {
+              title: {
+                display: true,
+                text: "Allocation (Millions KES)"
+              },
+            }
+          }
+        }
+      });
+    }
+
+
+    /* =========================
+      EXPORT PNG
+    ========================= */
+
+    const pngBtn = document.getElementById('makueniExportPNG');
+    if (pngBtn && makueniChart) {
+      pngBtn.addEventListener('click', () => {
+        const url = makueniChart.toBase64Image();
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = "makueni-budget-trend.png";
+        a.click();
+      });
+    }
+
+
+    /* =========================
+      EXPORT CSV
+    ========================= */
+
+    const csvBtn = document.getElementById('makueniExportCSV');
+    if (csvBtn) {
+      csvBtn.addEventListener('click', () => {
+        const rows = [
+          ["Financial Year", ...makueniBudgetData.datasets.map(d => d.label)]
+        ];
+
+        makueniBudgetData.labels.forEach((label, i) => {
+          rows.push([
+            label,
+            ...makueniBudgetData.datasets.map(d => d.data[i])
+          ]);
+        });
+
+        const csv = rows.map(r => r.join(",")).join("\n");
+
+        const blob = new Blob([csv], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "makueni-budget-trend.csv";
+        a.click();
+
+        URL.revokeObjectURL(url);
+      });
+    }
   </script>
 </body>
 </html>
