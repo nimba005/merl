@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Climate Investment Projects | MERL Tool</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap navline">
+    <a class="brandmark" href="index.html">
+      <img src="static/images/coat-of-arms.png" alt="">
+      <div class="title">
+        <strong>MERL Tool</strong>
+        <span>Monitoring • Evaluation • Reporting • Learning</span>
+      </div>
+    </a>
+
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+
+      <div class="menu">
+        <a class="menu-btn" href="#">Counties</a>
+        <div class="menu-panel">
+          <a href="vihiga.html">Vihiga County</a>
+          <a href="makueni.html">Makueni County</a>
+        </div>
+      </div>
+
+      <a href="projects.html" class="is-active">Explore Projects</a>
+      <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section section-light">
+  <div class="wrap">
+
+    <div class="section-title">
+      <div>
+        <h2>Climate Investment Projects</h2>
+        <p>Browse and filter projects across all counties.</p>
+      </div>
+    </div>
+
+    <!-- FILTERS -->
+    <form class="filters" id="merl-filter-form">
+      <div class="field">
+        <label>Year</label>
+        <select name="year">
+          <option value="">All years</option>
+          <option value="2024">2024/2025</option>
+          <option value="2023">2023/2024</option>
+          <option value="2022">2022/2023</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>County</label>
+        <select name="county">
+          <option value="">All counties</option>
+          <option value="Makueni">Makueni</option>
+          <option value="Vihiga">Vihiga</option>
+          <option value="Kitui">Kitui</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Sector</label>
+        <select name="sector">
+          <option value="">All sectors</option>
+          <option value="Water">Water & Sanitation</option>
+          <option value="Agriculture">Agriculture</option>
+          <option value="Health">Health</option>
+          <option value="Infrastructure">Infrastructure</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button type="submit" class="btn btn-light">Filter</button>
+        <button type="button" class="btn btn-outline" id="merl-reset">Reset</button>
+      </div>
+    </form>
+
+    <!-- PROJECT CARDS -->
+    <div class="cards-grid" id="merl-projects">
+        <!-- =====================
+        MAKUENI PROJECTS
+        ====================== -->
+
+        <article class="card" data-year="2024" data-county="Makueni" data-sector="Water">
+        <h3>Kikuu / Kiangini Community Water Project</h3>
+        <p>Construction and augmentation of a community water supply system in Makueni County.</p>
+        <div class="meta">
+            <span class="tag">FY 2024/25</span>
+            <span class="tag">Makueni</span>
+            <span class="tag">Water</span>
+        </div>
+        <a class="more" href="project-details.html#kikuu-community-water-project">Read more →</a>
+        </article>
+
+        <article class="card" data-year="2024" data-county="Makueni" data-sector="Agriculture">
+        <h3>Smallholder Climate-Smart Irrigation Scheme</h3>
+        <p>Drip irrigation and on-farm water harvesting for smallholder farmers in Makueni.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Makueni</span>
+    <span class="tag">Agriculture</span>
+  </div>
+  <a class="more" href="project-details.html#smallholder-climate-smart-irrigation">Read more →</a>
+</article>
+
+<article class="card" data-year="2023" data-county="Makueni" data-sector="Infrastructure">
+  <h3>Ward Access Roads & Flood Control Structures</h3>
+  <p>Climate-resilient road upgrades and drainage systems.</p>
+  <div class="meta">
+    <span class="tag">FY 2023/24</span>
+    <span class="tag">Makueni</span>
+    <span class="tag">Infrastructure</span>
+  </div>
+  <a class="more" href="project-details.html#ward-access-roads-flood-control">Read more →</a>
+</article>
+
+<article class="card" data-year="2023" data-county="Makueni" data-sector="Health">
+  <h3>Health Centre Upgrade & Solarization</h3>
+  <p>Expansion and solar power installation in public health facilities.</p>
+  <div class="meta">
+    <span class="tag">FY 2023/24</span>
+    <span class="tag">Makueni</span>
+    <span class="tag">Health</span>
+  </div>
+  <a class="more" href="project-details.html#health-centre-upgrade-solarization">Read more →</a>
+</article>
+
+<article class="card" data-year="2022" data-county="Makueni" data-sector="Water">
+  <h3>Borehole Drilling & Solar Pumping Programme</h3>
+  <p>Solarized boreholes improving drought resilience in ASAL wards.</p>
+  <div class="meta">
+    <span class="tag">FY 2022/23</span>
+    <span class="tag">Makueni</span>
+    <span class="tag">Water</span>
+  </div>
+  <a class="more" href="project-details.html#borehole-drilling-solar-pumping">Read more →</a>
+</article>
+
+<article class="card" data-year="2022" data-county="Makueni" data-sector="Infrastructure">
+  <h3>County Disaster Operations & Early Warning Centre</h3>
+  <p>Establishment of climate disaster coordination centre.</p>
+  <div class="meta">
+    <span class="tag">FY 2022/23</span>
+    <span class="tag">Makueni</span>
+    <span class="tag">Infrastructure</span>
+  </div>
+  <a class="more" href="project-details.html#disaster-operations-early-warning-centre">Read more →</a>
+</article>
+
+
+<!-- =====================
+VIHIGA PROJECTS
+====================== -->
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Water">
+  <h3>Augmentation of Ebukhaya Community Water Project</h3>
+  <p>Expansion of Ebukhaya water supply serving 345 households.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Water</span>
+  </div>
+  <a class="more" href="project-details.html#augmentation-of-ebukhaya-community-water-project">Read more →</a>
+</article>
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Water">
+  <h3>Ekamanji Climate Resilient Water Project</h3>
+  <p>Climate-resilient water infrastructure in Ekamanji area.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Water</span>
+  </div>
+  <a class="more" href="project-details.html#ekamanji-community-climate-resilient-water-project">Read more →</a>
+</article>
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Environment">
+  <h3>Rehabilitation of 70 Acres of Maragoli Hills Forest</h3>
+  <p>Ecosystem restoration and watershed protection project.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Environment</span>
+  </div>
+  <a class="more" href="project-details.html#rehabilitation-of-70-acres-of-maragoli-hills-forest">Read more →</a>
+</article>
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Infrastructure">
+  <h3>Construction of Mutave–Jepesi Bridge</h3>
+  <p>Bridge improving connectivity and climate resilience.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Infrastructure</span>
+  </div>
+  <a class="more" href="project-details.html#construction-of-mutave-jepesi-bridge">Read more →</a>
+</article>
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Agriculture">
+  <h3>South Maragoli Apiculture Project</h3>
+  <p>Commercial climate-resilient beekeeping enterprise.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Agriculture</span>
+  </div>
+  <a class="more" href="project-details.html#completion-commercialization-of-south-maragoli-apiculture-project">Read more →</a>
+</article>
+
+<article class="card" data-year="2024" data-county="Vihiga" data-sector="Agriculture">
+  <h3>Buhani Irrigation Commercialization</h3>
+  <p>Climate-smart irrigation strengthening agricultural resilience.</p>
+  <div class="meta">
+    <span class="tag">FY 2024/25</span>
+    <span class="tag">Vihiga</span>
+    <span class="tag">Agriculture</span>
+  </div>
+  <a class="more" href="project-details.html#completion-commercialization-of-buhani-irrigation-project">Read more →</a>
+</article>
+
+
+  </div>
+</section>
+
+<script>
+const form = document.getElementById('merl-filter-form');
+const resetBtn = document.getElementById('merl-reset');
+const cards = Array.from(document.querySelectorAll('#merl-projects .card'));
+
+function apply(){
+  const year = form.year.value;
+  const county = form.county.value;
+  const sector = form.sector.value;
+
+  cards.forEach(card=>{
+    const okYear = !year || card.dataset.year === year;
+    const okCounty = !county || card.dataset.county === county;
+    const okSector = !sector || card.dataset.sector === sector;
+    card.style.display = (okYear && okCounty && okSector) ? '' : 'none';
+  });
+}
+
+form.addEventListener('submit',(e)=>{e.preventDefault();apply();});
+form.addEventListener('change',apply);
+resetBtn.addEventListener('click',()=>{form.reset();apply();});
+</script>
+
+</body>
+</html>
