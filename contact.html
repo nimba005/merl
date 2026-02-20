@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>MERL Tool – Contact</title>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap navline">
+    <a class="brandmark" href="index.html">
+      <img src="static/images/coat-of-arms.png" alt="MERL logo">
+      <div class="title">
+        <strong>MERL Tool</strong>
+        <span>Monitoring • Evaluation • Reporting • Learning</span>
+      </div>
+    </a>
+
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Explore Projects</a>
+      <a href="contact.html" class="is-active">Contact</a>
+      <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+    <div class="section-title">
+      <div>
+        <h2>MERL Support & Contact</h2>
+        <p>
+          For technical assistance, dashboard access, project reporting support,
+          or institutional inquiries, contact the MERL coordination team.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-shell">
+      <form class="form" action="mailto:e.nimba@agnesafrica.org" method="POST" enctype="text/plain">
+
+        <div class="field">
+          <label>Name</label>
+          <input type="text" name="Name" required>
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="Email" required>
+        </div>
+
+        <div class="field">
+          <label>Institution / Role</label>
+          <input type="text" name="Role" required>
+        </div>
+
+        <div class="field">
+          <label>County (if applicable)</label>
+          <input type="text" name="County">
+        </div>
+
+        <div class="full">
+          <label>Message</label>
+          <textarea name="Message" rows="6" required></textarea>
+        </div>
+
+        <div class="send-row full">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footline">
+      <div>© <span id="year"></span> MERL Tool</div>
+      <div>
+        <a href="#">Privacy</a>
+        <span class="sep">•</span>
+        <a href="#">Terms</a>
+        <span class="sep">•</span>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
