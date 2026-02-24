@@ -17,35 +17,35 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-inner container">
-      <a class="brand" href="index.html" aria-label="MERL Tool Home">
-        <img src="static/images/coat-of-arms.png" alt="Kenya Coat of Arms" class="brand-logo">
-        <img src="static/images/makueni-logo.png" alt="Makueni County Logo" class="brand-logo brand-logo-secondary">
-        <span class="brand-text">MERL TOOL</span>
+  <header class="topbar">
+    <div class="wrap navline">
+      <a class="brandmark" href="index.html">
+        <img src="static/images/coat-of-arms.png" alt="MERL logo">
+        <div class="title">
+          <strong>MERL Tool</strong>
+          <span>Monitoring • Evaluation • Reporting • Learning</span>
+        </div>
       </a>
 
-      <!-- Mobile menu toggle -->
+      <!-- Mobile nav toggle -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
-      <label for="nav-toggle" class="nav-burger" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </label>
+      <label class="burger" for="nav-toggle" aria-hidden="true"><i></i></label>
 
-      <nav class="nav-links" aria-label="Primary">
+      <nav class="navlinks" aria-label="Primary">
         <a href="index.html">Home</a>
 
-        <div class="has-dd">
-          <a href="javascript:void(0)" class="dd-parent" aria-haspopup="true">Counties</a>
-          <input type="checkbox" id="dd-counties" class="dd-toggle" aria-label="Toggle Counties menu">
-          <label for="dd-counties" class="dd-caret" aria-hidden="true"></label>
-
-          <div class="dropdown" role="menu" aria-label="Counties menu">
-            <a href="vihiga.html">Vihiga County</a>
-            <a href="makueni.html" class="active">Makueni County</a>
+        <div class="menu">
+          <a class="menu-btn" href="javascript:void(0)" aria-haspopup="true">Counties</a>
+          <div class="menu-panel" role="menu" aria-label="Counties menu">
+            <a href="vihiga.html" role="menuitem" class="is-active">Vihiga County</a>
+            <a href="makueni.html" role="menuitem">Makueni County</a>
           </div>
         </div>
 
-        <a href="https://merl.agnes.africa/home" class="btn btn-login">🔵 Staff Portal</a>
+        <a href="knowledge-centre.html">Resource Centre</a>
+        <a class="btn btn-quiet" href="projects.html">Explore Projects</a>
+        <a class="btn btn-quiet" href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
       </nav>
     </div>
   </header>
