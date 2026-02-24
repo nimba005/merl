@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MERL Tool – Knowledge & Resource Centre</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap navline">
+    <a class="brandmark" href="index.html">
+      <img src="static/images/coat-of-arms.png" alt="MERL logo">
+      <div class="title">
+        <strong>MERL Tool</strong>
+        <span>Monitoring • Evaluation • Reporting • Learning</span>
+      </div>
+    </a>
+
+    <nav class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="knowledge-centre.html" class="is-active">Knowledge & Resource Centre</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+
+    <div class="section-title">
+      <h2>Knowledge & Resource Centre</h2>
+      <p>
+        Access technical guides, policy documents, indicator frameworks,
+        capacity-building toolkits and official MERL documentation.
+      </p>
+    </div>
+
+    <div class="resources-grid">
+
+        <a href="static/docs/merl-technical-guide.pdf" 
+            class="tile"
+            target="_blank"
+            rel="noopener">
+
+            <img src="static/images/gallery-2.jpg" 
+                alt="MERL Technical Guide cover">
+
+            <span>
+                MERL Technical Guide  
+                <small>View PDF</small>
+            </span>
+
+        </a>
+
+
+        <a href="static/docs/merl-user-manual.pdf" 
+            class="tile"
+            target="_blank"
+            rel="noopener">
+
+            <img src="static/images/gallery-5.jpg" 
+                alt="Dashboard User Manual cover">
+
+            <span>
+                Dashboard User Manual  
+                <small>View PDF</small>
+            </span>
+
+        </a>
+
+
+        <a href="static/docs/climate-indicators-framework.pdf" 
+            class="tile"
+            target="_blank"
+            rel="noopener">
+
+            <img src="static/images/gallery-6.jpg" 
+                alt="Climate Indicators Framework cover">
+
+            <span>
+                Climate Indicator Framework  
+                <small>Download PDF</small>
+            </span>
+
+        </a>
+
+
+        <a href="static/docs/training-toolkit.pdf" 
+            class="tile"
+            target="_blank"
+            rel="noopener">
+
+            <img src="static/images/gallery-3.jpg" 
+                alt="Training Toolkit cover">
+
+            <span>
+                Training Toolkit (ToT)  
+                <small>Access Document</small>
+            </span>
+
+        </a>
+
+    </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footline">
+      <div>© <span id="year"></span> MERL Tool</div>
+      <div>
+        <a href="#">Privacy</a> •
+        <a href="#">Terms</a> •
+        <a href="contact.html">Support</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>

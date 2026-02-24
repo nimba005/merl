@@ -261,16 +261,58 @@ a{ color: inherit; }
 }
 .btn-primary:hover{ filter: brightness(1.02); transform: translateY(-1px); }
 .btn-quiet{
-  background: rgba(11,18,32,.04);
-  border-color: rgba(13,23,44,.12);
-  color: rgba(11,18,32,.88);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #ffffff;
 }
 .btn-quiet:hover{ background: rgba(11,18,32,.06); }
 
 /* =========================================================
    HERO
 ========================================================= */
-.hero{ padding: 42px 0 26px; }
+.hero{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(11,18,32,.55) 0%,
+      rgba(11,18,32,.35) 45%,
+      rgba(11,18,32,.25) 100%
+    ),
+    url("static/images/hero-excavator.jpg");
+
+  background-size: cover;
+  background-position: center 35%; /* Prevents zoom-crop effect */
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+}
+
+/* HERO TEXT FIXES */
+.hero .stats-head h2{
+  color: #ffffff;
+}
+
+.hero .stats-head .hint{
+  color: rgba(255,255,255,.75);
+}
+
+.hero .kpi{
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.20);
+}
+
+.hero .kpi .label{
+  color: rgba(255,255,255,.80);
+}
+
+.hero .kpi .value{
+  color: #ffffff;
+}
 
 .hero-grid{
   display:grid;
@@ -281,24 +323,97 @@ a{ color: inherit; }
 
 .hero-card{
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(13,23,44,.10);
-  background: rgba(255,255,255,.55);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
   overflow:hidden;
 }
+
+
 .hero-message{
   padding: 26px 26px 22px;
   position: relative;
 }
+
+/* ===============================
+   HERO WORD ROTATION
+================================= */
+
+.hero-rotator{
+  position: relative;
+  height: 70px;
+  overflow: hidden;
+  font-size: clamp(34px, 3vw + 12px, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.hero-rotator .slide{
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  animation: rotateWords 12s infinite;
+  text-align: left;
+}
+
+.hero-rotator .slide:nth-child(1){ animation-delay: 0s; }
+.hero-rotator .slide:nth-child(2){ animation-delay: 3s; }
+.hero-rotator .slide:nth-child(3){ animation-delay: 6s; }
+.hero-rotator .slide:nth-child(4){ animation-delay: 9s; }
+
+@keyframes rotateWords{
+  0%{ opacity:0; transform: translateY(20px); }
+  5%{ opacity:1; transform: translateY(0); }
+  25%{ opacity:1; transform: translateY(0); }
+  30%{ opacity:0; transform: translateY(-20px); }
+  100%{ opacity:0; }
+}
+
+.hero-about-list{
+  margin: 14px 0;
+  padding-left: 18px;
+  font-size: 14px;
+  color: rgba(255,255,255,.9);
+}
+
+.hero-about-list li{
+  margin-bottom: 6px;
+}
+
+.clean-hero{
+  background: transparent;
+  padding: 40px 0 20px;
+}
+
+.clean-hero .hero-inner{
+  align-items: center;
+}
+
+.clean-hero .quick-stats{
+  background: #ffffff;
+  border: 1px solid rgba(13,23,44,.08);
+  box-shadow: 0 8px 24px rgba(13,23,44,.08);
+}
+
+body:has(.hero--county){
+  background: #f4f6fa !important;
+}
+
+body.dashboard-page{
+  background: #f4f6fa;
+}
+
 .badge{
   display:inline-flex;
   align-items:center;
   gap: 8px;
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(247,201,72,.18);
-  border: 1px solid rgba(247,201,72,.28);
-  color: rgba(11,18,32,.92);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #ffffff;
   font-weight: 800;
   font-size: 12px;
 }
@@ -315,14 +430,15 @@ a{ color: inherit; }
   font-size: clamp(26px, 2.8vw + 10px, 44px);
   line-height: 1.15;
   letter-spacing: .2px;
-  color: var(--ink);
+  color: #ffffff;
 }
 .hero-message h1 span{
-  color: #b57900;
+  color: var(--accent);
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 .hero-message p{
   margin: 0;
-  color: rgba(34,49,74,.78);
+  color: rgba(255,255,255,.85);
   max-width: 62ch;
   font-size: 14.5px;
 }
