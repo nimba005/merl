@@ -20,10 +20,24 @@
       </div>
     </a>
 
-    <nav class="navlinks">
+    <!-- Mobile nav toggle -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+    <label class="burger" for="nav-toggle" aria-hidden="true"><i></i></label>
+
+    <nav class="navlinks" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="projects.html">Explore Projects</a>
-      <a href="contact.html" class="is-active">Contact</a>
+
+      <div class="menu">
+        <a class="menu-btn" href="javascript:void(0)" aria-haspopup="true">Counties</a>
+        <div class="menu-panel" role="menu" aria-label="Counties menu">
+          <a href="vihiga.html" role="menuitem" class="is-active">Vihiga County</a>
+          <a href="makueni.html" role="menuitem">Makueni County</a>
+        </div>
+      </div>
+
+      <a href="knowledge-centre.html">Resource Centre</a>
+      <a class="btn btn-quiet" href="projects.html">Explore Projects</a>
+      <a class="btn btn-quiet" href="contact.html">Contact</a>
       <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
     </nav>
   </div>
