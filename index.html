@@ -33,6 +33,8 @@
       <nav class="navlinks" aria-label="Primary">
         <a href="index.html" class="is-active">Home</a>
 
+        <a href="ministry-dashboard.html">Ministry</a>
+
         <div class="menu">
           <a class="menu-btn" href="javascript:void(0)" aria-haspopup="true">Counties</a>
           <div class="menu-panel" role="menu" aria-label="Counties menu">
@@ -45,7 +47,7 @@
 
         <a class="btn btn-quiet" href="projects.html">Explore Projects</a>
         <a class="btn btn-quiet" href="contact.html">Contact</a>
-        <a class="btn btn-primary" href="https://merl.agnes.africa/home">🔵 Staff Portal</a>
+        <a class="btn btn-primary" href="https://merlkenya.org/home">🔵 Staff Portal</a>
       </nav>
     </div>
   </header>
@@ -85,9 +87,13 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="auth.html?next=vihiga.html&county=Vihiga">Open Dashboard</a>
+          <a class="btn btn-primary" href="ministry-dashboard.html">
+            Ministry Dashboard
+          </a>
           <a class="btn btn-quiet" href="knowledge-centre.html">Knowledge Centre</a>
-          <a class="btn btn-quiet" href="#contact">Support</a>
+          <a class="btn btn-quiet" href="contact.html">
+            Contact Support
+          </a>
         </div>
 
         <!-- QUICK STATS (still static in this HTML; wire to backend later) -->
@@ -136,23 +142,37 @@
           </div>
           <div class="stats-grid">
             <div class="kpi">
-              <p class="label">View county dashboards</p>
+              <p class="label">County Dashboards</p>
               <p class="value neutral">Vihiga / Makueni</p>
-            </div>
-            <div class="kpi">
-              <p class="label">Budget allocation</p>
-              <p class="value neutral">Across sectors</p>
-              <a href="#budget-chart" class="more">View graph →</a>
+              <a href="auth.html?next=vihiga.html&county=Vihiga" class="more">
+                Access →
+              </a>
             </div>
 
             <div class="kpi">
-              <p class="label">Access resources</p>
-              <p class="value neutral">Guides & toolkits</p>
+              <p class="label">Explore Projects</p>
+              <p class="value neutral">Projects</p>
+              <a href="projects.html" class="more">
+                View projects →
+              </a>
             </div>
+
             <div class="kpi">
-              <p class="label">Request support</p>
-              <p class="value neutral">Helpdesk form</p>
+              <p class="label">Resource Centre</p>
+              <p class="value neutral">Guides & Frameworks</p>
+              <a href="knowledge-centre.html" class="more">
+                Open resources →
+              </a>
             </div>
+
+            <div class="kpi">
+              <p class="label">Contact Support</p>
+              <p class="value neutral">Helpdesk access</p>
+              <a href="contact.html" class="more">
+                Get help →
+              </a>
+            </div>
+
           </div>
         </div>
 
