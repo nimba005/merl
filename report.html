@@ -55,7 +55,7 @@
 
     if (!user) {
       // Redirect to main MERL login application
-      location.replace("https://merl.agnes.africa/home");
+      location.replace("https://merlkenya.org/home");
     } else {
       document.getElementById('title').textContent = `Report: ${pid}`;
       const scope = user.scope === 'county' ? `${user.county} County` : 'National Government';
@@ -71,7 +71,7 @@
       e.preventDefault();
       localStorage.removeItem('merlUser');
       // Redirect to main MERL login page
-      location.assign("https://merl.agnes.africa/home");
+      location.assign("https://merlkenya.org/home");
     });
   </script>
 </body>
