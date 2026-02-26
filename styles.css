@@ -314,7 +314,9 @@ a{ color: inherit; }
 }
 
 .hero .kpi .value{
-  color: #ffffff;
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 900;
 }
 
 .hero-grid{
@@ -522,8 +524,8 @@ body.dashboard-page{
   letter-spacing: .2px;
   color: var(--ink);
 }
-.kpi .value.good{ color: #0f8a5d; }
-.kpi .value.warn{ color: #b45309; }
+.kpi .value.good,
+.kpi .value.warn,
 .kpi .value.neutral{ color: var(--ink); }
 
 /* =========================================================
