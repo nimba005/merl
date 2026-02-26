@@ -548,27 +548,6 @@
       </article>
     </section>
 
-    <!-- DEFAULT VIEW -->
-    <section class="default-pane detail-card">
-      <h2>Select a Project</h2>
-      <p class="detail-lead">Choose a project below or open one from the homepage.</p>
-
-      <div class="project-list">
-        <a class="project-link" href="#kikuu-water-project"><b>Kikuu / Kiangini Community Water Project</b><span class="link-sub">Water supply (FLLoCA)</span></a>
-        <a class="project-link" href="#kaila-water-project"><b>Kaila Climate-Resilient Water Project</b><span class="link-sub">Water infrastructure (FLLoCA)</span></a>
-        <a class="project-link" href="#ebukhaya-community-water-project"><b>Ebukhaya Community Water Project</b><span class="link-sub">Augmentation (FLLoCA)</span></a>
-        <a class="project-link" href="#ekamanji-community-water-project"><b>Ekamanji Community Water Project</b><span class="link-sub">Water supply (FLLoCA)</span></a>
-        <a class="project-link" href="#maragoli-hills-forest-rehabilitation"><b>Maragoli Hills Forest Rehabilitation</b><span class="link-sub">Ecosystem restoration (FLLoCA)</span></a>
-        <a class="project-link" href="#mutave-jepsesi-bridge"><b>Mutave–Jepsesi Bridge</b><span class="link-sub">Infrastructure resilience (FLLoCA)</span></a>
-        <a class="project-link" href="#vigina-water-project"><b>Vigina Water Project</b><span class="link-sub">Expansion &amp; solarization (FLLoCA)</span></a>
-        <a class="project-link" href="#nadiradi-community-water-project"><b>Nadiradi Community Water Project</b><span class="link-sub">Augmentation (FLLoCA)</span></a>
-        <a class="project-link" href="#kaptik-mwala-water-project"><b>Kaptik–Mwala Water Project</b><span class="link-sub">Construction (FLLoCA)</span></a>
-        <a class="project-link" href="#kegondi-community-water-project"><b>Kegondi Water Project</b><span class="link-sub">Construction (FLLoCA)</span></a>
-        <a class="project-link" href="#south-maragoli-apiculture-project"><b>South Maragoli Apiculture Project</b><span class="link-sub">Commercialization (FLLoCA)</span></a>
-        <a class="project-link" href="#buhani-irrigation-project"><b>Buhani Irrigation Project</b><span class="link-sub">Irrigation commercialization (FLLoCA)</span></a>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER (uses your existing .footer styles) -->
@@ -586,7 +565,27 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+    /* AUTO OPEN PROJECT FROM URL HASH */
+    window.addEventListener("load", () => {
+
+      const hash = window.location.hash;
+
+      if(hash){
+        const target = document.querySelector(hash);
+
+        if(target){
+          setTimeout(()=>{
+            target.scrollIntoView({
+              behavior:"smooth",
+              block:"start"
+            });
+          },150);
+        }
+      }
+    });
   </script>
 </body>
 </html>
